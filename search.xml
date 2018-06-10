@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title>SpringBoot集成MongoDB</title>
+      <link href="/2018/06/09/SpringBoot%E9%9B%86%E6%88%90MongoDB/"/>
+      <url>/2018/06/09/SpringBoot%E9%9B%86%E6%88%90MongoDB/</url>
+      <content type="html"><![CDATA[<h3 id="创建Spring-Boot工程并导入Maven依赖"><a href="#创建Spring-Boot工程并导入Maven依赖" class="headerlink" title="创建Spring Boot工程并导入Maven依赖"></a>创建Spring Boot工程并导入Maven依赖</h3><blockquote><p>注：示例代码使用的Spring Boot版本为：2.0.1.RELEASE  </p></blockquote><pre><code class="xml">&lt;dependencies&gt;   &lt;dependency&gt;      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;      &lt;artifactId&gt;spring-boot-starter-data-mongodb&lt;/artifactId&gt;   &lt;/dependency&gt;   &lt;dependency&gt;      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;      &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;   &lt;/dependency&gt;   &lt;dependency&gt;      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;      &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;      &lt;scope&gt;test&lt;/scope&gt;   &lt;/dependency&gt;&lt;/dependencies&gt;</code></pre><h3 id="修改配置文件-application-yml"><a href="#修改配置文件-application-yml" class="headerlink" title="修改配置文件 application.yml"></a>修改配置文件 application.yml</h3><pre><code class="yaml">spring:  data:    mongodb:      host: 192.168.109.128      port: 27017      database: test</code></pre><h3 id="创建Employee实体"><a href="#创建Employee实体" class="headerlink" title="创建Employee实体"></a>创建Employee实体</h3><blockquote><p>注：Employee 映射 Document  </p></blockquote><pre><code class="java">@Document(collection = &quot;employee&quot;) // 集合名public class Employee {    @Id    private String id;    private String name;    private Double salary;    private Date birthday;    // 省略 getter/setter}</code></pre><h3 id="创建MongoRepository"><a href="#创建MongoRepository" class="headerlink" title="创建MongoRepository"></a>创建MongoRepository</h3><pre><code class="java">package com.orchoe.repository;import com.orchoe.entity.Employee;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.data.mongodb.core.MongoTemplate;import org.springframework.data.mongodb.core.query.Criteria;import org.springframework.data.mongodb.core.query.Query;import org.springframework.stereotype.Repository;import java.util.List;/** * @author Austin * @date 2018/3/07 16:42 */@Repositorypublic class MongoRepository {    @Autowired    private MongoTemplate mongoTemplate;    public void insertOne(Employee employee){        mongoTemplate.insert(employee);    }    public void deleteOne(Employee employee){        mongoTemplate.remove(employee);    }    public User findOne(String id){        return mongoTemplate.findById(id,Employee.class);    }    public List&lt;Employee&gt; findAll(){        return mongoTemplate.findAll(Employee.class);    }    public List&lt;Employee&gt; findByName(String name){        return mongoTemplate.find(Query.query(Criteria.where(&quot;name&quot;).is(name)),Employee.class);    }}</code></pre><h3 id="创建测试类"><a href="#创建测试类" class="headerlink" title="创建测试类"></a>创建测试类</h3><pre><code class="java">package com.orchoe.test;import com.orchoe.repository.MongoRepository;import com.orchoe.entity.Employee;import org.junit.Test;import org.junit.runner.RunWith;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.test.context.junit4.SpringRunner;import java.util.Date;import java.util.List;@RunWith(SpringRunner.class)@SpringBootTestpublic class SpringbootMongodbApplicationTests {   @Autowired   private MongoRepository mongoRepository;   @Test   public void contextLoads() {        mongoRepository.insertOne(new Employee(&quot;zhangsan&quot;, 2000.0D, new Date()));        List&lt;Employee&gt; employees = mongoRepository.findAll();        employees.forEach(employee -&gt; System.out.println(employee));    }}</code></pre>]]></content>
+      
+      
+        <tags>
+            
+            <tag> MongoDB </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2018/06/09/hello-world/"/>
+      <url>/2018/06/09/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+    </entry>
+    
+  
+  
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<h1 id="About"><a href="#About" class="headerlink" title="About"></a>About</h1>]]></content>
+    </entry>
+    
+  
+</search>
