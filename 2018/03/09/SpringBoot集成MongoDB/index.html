@@ -23,6 +23,8 @@
 
 
 
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
 
     <link rel="dns-prefetch" href="https://changyan.sohu.com"/>
 
@@ -80,7 +82,7 @@
     <!-- Import CSS -->
     
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?26PwDnXGkKlismlmH8sDXQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
             
@@ -222,7 +224,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Orchoe&#39;s Blog">
-    <meta name="msapplication-starturl" content="https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/">
+    <meta name="msapplication-starturl" content="https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Orchoe&#39;s Blog">
@@ -237,7 +239,7 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/">
+    <meta property="og:url" content="https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="SpringBoot集成MongoDB | Orchoe&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png">
@@ -245,8 +247,8 @@
     <meta property="og:article:tag" content="MongoDB"> 
 
     
-        <meta property="article:published_time" content="Sat Jun 09 2018 22:56:34 GMT+0800">
-        <meta property="article:modified_time" content="Sun Jun 10 2018 01:35:19 GMT+0800">
+        <meta property="article:published_time" content="Fri Mar 09 2018 22:56:34 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jun 10 2018 17:27:40 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -254,7 +256,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/index.html" />
+        <link rel="canonical" href="https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -266,10 +268,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/index.html",
+    "mainEntityOfPage": "https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/index.html",
     "headline": "SpringBoot集成MongoDB",
-    "datePublished": "Sat Jun 09 2018 22:56:34 GMT+0800",
-    "dateModified": "Sun Jun 10 2018 01:35:19 GMT+0800",
+    "datePublished": "Fri Mar 09 2018 22:56:34 GMT+0800",
+    "dateModified": "Sun Jun 10 2018 17:27:40 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Maxwell Austin",
@@ -309,6 +311,30 @@
     
         <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				<!-- Material Navibar -->
+<div id="navibar" class="top-bar">
+	<!-- LOGO -->
+    <a href="/about" target="_blank">
+        <img src="/img/logo.png" alt="logo" />
+    </a>
+	<!-- Search -->
+    
+
+
+
+
+    <!-- Local -->
+    <form autocomplete="off" id="search-form" class="mdl-textfield__expandable-holder">
+		<span id="search-icon" class="material-icons" role="presentation">search</span>
+        <input type="text" id="search" class="form-control search-input" name="q" results="0" placeholder="搜索CodingCow"/>
+    </form>
+    <div id="local-search-result"></div>
+
+
+
+</div>
+
+<!-- ������ -->
                 
 
                 <!-- Main Container -->
@@ -316,6 +342,7 @@
 
                     <!-- Top Anchor -->
                     <div id="top"></div>
+					
 
                     
                         <!-- Hamburger Button -->
@@ -373,7 +400,7 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/springboot_mongo.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/springboot_mongo.jpg)">
     
             <p class="article-headline-p">
                 SpringBoot集成MongoDB
@@ -395,7 +422,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Maxwell Austin</strong>
-        <span>6月 09, 2018</span>
+        <span>3月 09, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -417,7 +444,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2klEQVR42u3aQXbbMAwE0Nz/0u0B0sgzgNra1NcqL4+R+bkIDAy/fj3y+cLGxsbGxsbGxsZ+S/ZX/Py0/g8f8G19/onf1/z0znzP2NjY2E9gv/jXH6xJ2C1vsx9sbGzsZ7Kvy8mLl5blpC11N+wZGxsbG3vBu6tdwcbGxsa+i520GUnB2wy2sLGxsbFnA5pZMWsbm9nv/+IsDRsbG/vt2XvAv//5P+Tb2NjY2G/Jbp8klL0uMPmx3vtgY2Njn8rOI9gkdk3WJ0UoueJT7wobGxv7wexNMNAeRBshFO/HxsbGPpSdf3wOy8dD+5D4tg4MGxsb+2PZeTFIvvTPhvj5AW1KKTY2Nvap7KRhuAbnF2jygVE73loFvdjY2NhHsNuv+/mAvi1vbbRcHD02Njb2oey8JUi2uCe1jUqxK2xsbOyj2cmAZj/iz0ltCYx2iI2NjX0oezZwnw33Z8Og/PjqeAAbGxv7IPY1pg0JNjFAXurqeBgbGxv7UHbeQuRHs7nQkx9osh9sbGzsJ7Cvi1l7QPmVnXbT+fq6bmNjY2N/OLuNYJO/ml3BmQ2ViqPHxsbGPpo9awxmI6FZK9LuBxsbG/tp7LYByMf9s5FT3hStZmnY2NjYx7HbODZvS/JhU/LmYXSBjY2NfTR7czlmH9/Oxlvt2AsbGxv7Cey2RWnD2jagncXA9SwNGxsb+8PZs6/4eaFqC9IsJMDGxsbGLsrAIsSdxQyzUdSLVgQbGxv7IHY0jlkUmFmIOztEbGxs7Gey2+euoLe9dnPDgWJjY2Mfyt6Uh821yGQ8lFzlKWIMbGxs7KPZ7Zhpf4mn3XpeCIsCho2NjX0cO3nFKmqNo9+2dYlKJjY2Njb2um1oD/fe6zvY2NjY2G242wKu1ySRw3CohI2NjX0Qux0qbcKABJ8XqqiZwcbGxj6a3Qa9yWBoExXnUURRMrGxsbEPZT/nwcbGxsbGxsbGxn6b5zdeLlMlhy9QzwAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1UlEQVR42u3aQXLbMBAEQP3/0/bVVbalmQXLpoDmSaUoBBo5THYXj48jnwc2NjY2NjY2Njb2LdmP+PnhRb98//3NLzYUrPL1T2d7xsbGxt6bnWxrBv6+3eTzC8Bsz9jY2NgHsNvt5m94/nfzI5j9BhsbGxv7+etycHJ8bYBhY2NjY68HRnsQK2/DxsbGxl5vKuXL5EVIElH/3EvDxsbGvj07H5re5/OfzrexsbGxb8xun7ZUyBtGbQTWO8fGxsbelJ0HQ4tvv0laS+0+sbGxsc9ht0vOwin5ph0hPH8nNjY29gns9Rhrt3jtIKEYOWBjY2NvzU7aQ395lScPp6IowsbGxt6UnUdCgm8v+rRFUXv02NjY2Cew6//QL7eK2pImHycvzbexsbGx35zdRsIKLz/cZPXiyLCxsbG3ZkeD0vg48is7s9JieJ0IGxsb+xj2LEjaln0+Wi4u5bRXdrCxsbE3Yudbbwe3s1Bsj2wYYNjY2NjHsGfBk0fjSsFzWS8NGxsbezt2fqVmFid1/IzaVdjY2NinsdvAyAuJlQZWHlcvjhgbGxt7U/YsivJLkPmbrw1CbGxs7HPYeYTkLaR2PJAfykqUYmNjY5/GXhnK5r9vIzM/9GGAYWNjY78huy0k2hZSezTtusVVHmxsbOwD2G3ZkLTs87XaplIbZtjY2NgnsNeHqbPB7WwknO8fGxsb+2T2rFn/nDRrDOUXiS4IMGxsbOy3Zect+LatMyt4VvY2bCphY2NjvyG7fdpLkCvtodmln2g8gI2Njb0Re7ZkEk4rsTcb6L5YHRsbG3trdh5aszJg/RpQHmC//hIbGxv7AHYeHsNRazz6bZ+lAMPGxsY+kj0b/c7aVcmhR/8Y2NjY2Njx57akmZU9+ZAYGxsb+xz2bLjbUtuxcd7GGgYYNjY29hbsyxo3FxUkxUWceEVsbGzsXdnnPNjY2NjY2NjY2Ni3eT4BFv7ilVRCepsAAAAASUVORK5CYII=">
     
 </ul>
 
@@ -445,10 +472,21 @@
     
 
     
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=SpringBoot集成MongoDB&url=https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/index.html&pic=https://orchoe.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=SpringBoot集成MongoDB&url=https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/index.html&pic=https://orchoe.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -457,7 +495,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=SpringBoot集成MongoDB&url=https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/index.html&via=Maxwell Austin" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=SpringBoot集成MongoDB&url=https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/index.html&via=Maxwell Austin" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -466,7 +504,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -475,7 +513,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://orchoe.github.io/2018/06/09/SpringBoot集成MongoDB/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -628,7 +666,7 @@ public class SpringbootMongodbApplicationTests {
     <!-- 使用 changyan -->
 <div id="changyan-comment">
     <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2018/06/09/SpringBoot集成MongoDB/"  ></div>
+<div id="SOHUCS" sid="2018/03/09/SpringBoot集成MongoDB/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = '';
@@ -652,19 +690,19 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2018/06/09/hello-world/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2018/06/09/hello-world/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 
@@ -681,7 +719,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
     <div id="sidebar-main">
         <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar.png);">
     <!-- Top bar -->
     <div class="top-bar"></div>
 
@@ -714,11 +752,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="mailto:antipe@outlook" target="_blank" title="Email Me">
+                    <a href="mailto:antipe@outlook" target="_blank" title="联系我">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
-                        Email Me
+                        联系我
                     </a>
                 </li>
             
@@ -752,7 +790,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -998,6 +1036,9 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
