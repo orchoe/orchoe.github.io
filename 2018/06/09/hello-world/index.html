@@ -157,7 +157,7 @@
 		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/donate2.png" alt="No Donate Image!">	
 	</div>
 
-	<span class="donate-word">世界美好 你也是ddd</span>
+	<span class="donate-word">生活总是充满惊喜</span>
 
 	<div class="donate-list">
 		<span class="iconfont icon-donate-wechat"></span>
@@ -208,22 +208,25 @@
 	
 
 
-    
-    <div id="disqus_thread"></div>
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
 
     <script>
-    (function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://'+'codingcow'+'.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());    
-    (d.head || d.body).appendChild(s);
-    })();
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: 'cFM0eCo0CQ9xmBXmHi1eltol-gzGzoHsz',
+        app_key: 'oh9tizsnvV2vNvWgqEvoNtQO',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
     </script>
-
-    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-
-
 	
 </article>
 
@@ -316,19 +319,6 @@
     
 
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-
-
 
      
     
@@ -346,11 +336,11 @@ var _hmt = _hmt || [];
 		
 		2018		
 	
-		Maxwell Austin
+		&nbsp;CodingCow
 		<br>
 
-		Theme By
-		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+		Powered By
+		<a href="https://hexo.io/" target="_blank">Hexo</a>	
 		</div>			
 	 
 </footer>   

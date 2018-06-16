@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Orchoe&#39;s Blog</title>
+  <title>CodingCow</title>
   
-  
+  <subtitle>Austin&#39;s Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://orchoe.github.io/"/>
+  <link href="http://codingcow.com/"/>
   <updated>2018-06-09T06:44:04.658Z</updated>
-  <id>https://orchoe.github.io/</id>
+  <id>http://codingcow.com/</id>
   
   <author>
     <name>Maxwell Austin</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://orchoe.github.io/2018/06/09/hello-world/"/>
-    <id>https://orchoe.github.io/2018/06/09/hello-world/</id>
+    <link href="http://codingcow.com/2018/06/09/hello-world/"/>
+    <id>http://codingcow.com/2018/06/09/hello-world/</id>
     <published>2018-06-09T06:44:04.658Z</published>
     <updated>2018-06-09T06:44:04.658Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>SpringBoot集成MongoDB</title>
-    <link href="https://orchoe.github.io/2018/03/09/SpringBoot%E9%9B%86%E6%88%90MongoDB/"/>
-    <id>https://orchoe.github.io/2018/03/09/SpringBoot集成MongoDB/</id>
+    <link href="http://codingcow.com/2018/03/09/SpringBoot%E9%9B%86%E6%88%90MongoDB/"/>
+    <id>http://codingcow.com/2018/03/09/SpringBoot集成MongoDB/</id>
     <published>2018-03-09T14:56:34.000Z</published>
     <updated>2018-06-16T05:23:27.564Z</updated>
     
@@ -55,12 +55,12 @@
     
     </summary>
     
-      <category term="教程" scheme="https://orchoe.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="http://codingcow.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="MongoDB" scheme="https://orchoe.github.io/tags/MongoDB/"/>
+      <category term="MongoDB" scheme="http://codingcow.com/tags/MongoDB/"/>
     
-      <category term="SpringBoot" scheme="https://orchoe.github.io/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://codingcow.com/tags/SpringBoot/"/>
     
   </entry>
   
