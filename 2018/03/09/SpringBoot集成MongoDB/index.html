@@ -92,7 +92,7 @@
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			2808
+			2810
 		</span>
 	
 </div>
@@ -105,10 +105,12 @@
 		
 
 			
-					<h1 id="（-gt-﹏-lt-）"><a href="#（-gt-﹏-lt-）" class="headerlink" title="（&gt;﹏&lt;）"></a>（&gt;﹏&lt;）</h1><h2 id="创建Spring-Boot工程并导入Maven依赖"><a href="#创建Spring-Boot工程并导入Maven依赖" class="headerlink" title="创建Spring Boot工程并导入Maven依赖"></a>创建Spring Boot工程并导入Maven依赖</h2><blockquote>
+					<p><img src="/images/springboot_mongo.jpg" alt="Alt text"></p>
+<h1 id="（-gt-﹏-lt-）"><a href="#（-gt-﹏-lt-）" class="headerlink" title="（&gt;﹏&lt;）"></a>（&gt;﹏&lt;）</h1><h2 id="创建Spring-Boot工程并导入Maven依赖"><a href="#创建Spring-Boot工程并导入Maven依赖" class="headerlink" title="创建Spring Boot工程并导入Maven依赖"></a>创建Spring Boot工程并导入Maven依赖</h2><blockquote>
 <p>注：示例代码使用的Spring Boot版本为：2.0.1.RELEASE  </p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="修改配置文件-application-yml"><a href="#修改配置文件-application-yml" class="headerlink" title="修改配置文件 application.yml"></a>修改配置文件 application.yml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  data:</span></span><br><span class="line"><span class="attr">    mongodb:</span></span><br><span class="line"><span class="attr">      host:</span> <span class="number">192.168</span><span class="number">.109</span><span class="number">.128</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">27017</span></span><br><span class="line"><span class="attr">      database:</span> <span class="string">test</span></span><br></pre></td></tr></table></figure>
 <h2 id="创建Employee实体"><a href="#创建Employee实体" class="headerlink" title="创建Employee实体"></a>创建Employee实体</h2><blockquote>
 <p>注：Employee 映射 Document  </p>
@@ -205,11 +207,11 @@
 
       </div>  
     <nav class="pf-paginator">
-      
-         
-          <a href="/2018/06/09/hello-world/" data-hover="Hello World">上一篇</a>      
-            
+           
         
+      
+        
+        <a href="/2018/03/09/hello-world/" data-hover="SpringBoot集成MongoDB"> 下一篇</a>
             
   </nav>   
   </div>
@@ -349,7 +351,8 @@
 		<br>
 
 		Powered By
-		<a href="https://hexo.io/" target="_blank">Hexo</a>	
+		<a href="https://hexo.io/" target="_blank">Hexo</a>
+		<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
 		</div>			
 	 
 </footer>   

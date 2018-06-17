@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codingcow.com/2018/03/09/hello-world/</loc>
+    
+    <lastmod>2018-06-16T16:56:46.416Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://codingcow.com/about/index.html</loc>
+    
+    <lastmod>2018-06-16T16:56:45.105Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://codingcow.com/2018/03/09/SpringBoot%E9%9B%86%E6%88%90MongoDB/</loc>
     
-    <lastmod>2018-06-16T05:23:27.564Z</lastmod>
+    <lastmod>2018-06-16T13:21:54.732Z</lastmod>
     
   </url>
   
@@ -16,23 +30,9 @@
   </url>
   
   <url>
-    <loc>http://codingcow.com/about/index.html</loc>
-    
-    <lastmod>2018-06-16T05:21:28.752Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://codingcow.com/tags/index.html</loc>
     
     <lastmod>2018-06-16T04:47:39.134Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://codingcow.com/2018/06/09/hello-world/</loc>
-    
-    <lastmod>2018-06-09T06:44:04.658Z</lastmod>
     
   </url>
   
