@@ -129,7 +129,8 @@
 	<div class="article-excerpt">	
 		
 			<p><img src="/images/springboot_mongo.jpg" alt="Alt text"></p>
-<h1 id="（-gt-﹏-lt-）"><a href="#（-gt-﹏-lt-）" class="headerlink" title="（&gt;﹏&lt;）"></a>（&gt;﹏&lt;）</h1><h2 id="创建Spring-Boot工程并导入Maven依赖"><a href="#创建Spring-Boot工程并导入Maven依赖" class="headerlink" title="创建Spring Boot工程并导入Maven依赖"></a>创建Spring Boot工程并导入Maven依赖</h2><blockquote>
+<h1 id="（-gt-﹏-lt-）"><a href="#（-gt-﹏-lt-）" class="headerlink" title="（&gt;﹏&lt;）"></a>（&gt;﹏&lt;）</h1><p>&nbsp; &nbsp; &nbsp; &nbsp; 最近在做日志采集的工作中用到了MongoDB这款NoSQL数据库，相较于常见的RDBMS灵活且快速；而且非结构化的数据存储格式也极为适合一些应用场景，既节省内存又能提高读写速度。了解如何将MongoDB集成到SpringBoot这样一款非常流行的轻量、快速的开发框架很有必要。</p>
+<h2 id="创建Spring-Boot工程并导入Maven依赖"><a href="#创建Spring-Boot工程并导入Maven依赖" class="headerlink" title="创建Spring Boot工程并导入Maven依赖"></a>创建Spring Boot工程并导入Maven依赖</h2><blockquote>
 <p>注：示例代码使用的Spring Boot版本为：2.0.1.RELEASE  </p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -148,20 +149,18 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2018/03/09/hello-world/">SpringBoot集成MongoDB</a>  
+	     <a class="article-title" href="/2017/12/21/HashMap原理分析/">HashMao原理分析</a>  
 	       
 		 
 
 		<div class="article-meta">
 		
-		3月 09, 2018
+		12月 21, 2017
 
 		
 			<span class="iconfont icon-star"></span>		 
 			            
-			<a class="article-tag" href="/tags/MongoDB/">MongoDB</a>           
-			            
-			<a class="article-tag" href="/tags/SpringBoot/">SpringBoot</a>           
+			<a class="article-tag" href="/tags/HashMap/">HashMap</a>           
 			
 		
 		</div>
@@ -174,8 +173,8 @@
     
 	<div class="article-excerpt">	
 		 
-			<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+			<p>&nbsp; &nbsp; &nbsp; &nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。</p>
+<h2 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; 在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。<br>从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一<br>个HashMap的时候，就会初始化一个数组。</p>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
@@ -188,7 +187,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/03/09/hello-world/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/12/21/HashMap原理分析/">阅读更多</a> 	</div>	
     
 </article>     
      	
