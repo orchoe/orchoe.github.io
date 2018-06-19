@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  悲观锁和乐观锁 |   CodingCow </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <!-- <a class="header-logo" href="/"></a> -->
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-categories" href="/categories">分类</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		悲观锁和乐观锁
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		10月 06, 2017
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			2826
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<h1 id=""><a href="#" class="headerlink" title="@_@"></a>@_@</h1><p>&nbsp; &nbsp; &nbsp; &nbsp;悲观锁还是乐观锁是人们定义的一种概念，可以认为是一种思想。其实不仅仅是关系型数据库系统中有乐观锁和悲观锁的概念，像memcached、hibernate、tair等都有类似的概念。<br>&nbsp; &nbsp; &nbsp; &nbsp;针对于不同的业务场景，应该选用不同的并发控制方式。所以，不要把乐观并发控制和悲观并发控制狭义的理解为DBMS中的概念，更不要把他们和数据中提供的锁机制（行锁、表锁、排他锁、共享锁）混为一谈。其实，在DBMS中，悲观锁正是利用数据库本身提供的锁机制来实现的。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面具体介绍一下悲观锁和乐观锁。<br><a id="more"></a></p>
+<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><blockquote>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在关系数据库管理系统里，悲观并发控制（又名“悲观锁”，Pessimistic Concurrency Control，缩写“PCC”）是一种并发控制的方法。它默认对每次数据操作加锁。如果一个事务执行的操作对某行数据应用了锁，那只有当这个事务把锁释放，其他事务才能够执行与该锁冲突的操作。悲观并发控制主要用于数据争用激烈的环境，以及发生并发冲突时使用锁保护数据的成本要低于回滚事务的成本的环境中。<br>&nbsp; &nbsp; &nbsp; &nbsp;悲观锁的实现，往往依靠数据库提供的锁机制（也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则，即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据）。</p>
+</blockquote>
+<h3 id="在数据库中，悲观锁的流程如下："><a href="#在数据库中，悲观锁的流程如下：" class="headerlink" title="在数据库中，悲观锁的流程如下："></a>在数据库中，悲观锁的流程如下：</h3><p>1) 在对任意记录进行修改前，先尝试为该记录加上排他锁（Exclusive Lock）。<br>2) 如果加锁失败，说明该记录正在被修改，那么当前查询可能要等待或者抛出异常。 具体响应方式由开发者根据实际需要决定。<br>3) 如果成功加锁，那么就可以对记录做修改，事务完成后就会解锁了。<br>4) 其间如果有其他对该记录做修改或加排他锁的操作，都会等待我们解锁或直接抛出异常。</p>
+<h3 id="MySQL-InnoDB-中使用悲观锁"><a href="#MySQL-InnoDB-中使用悲观锁" class="headerlink" title="MySQL(InnoDB)中使用悲观锁"></a>MySQL(InnoDB)中使用悲观锁</h3><blockquote>
+<p>要使用悲观锁，我们必须关闭mysql数据库的自动提交属性，因为MySQL默认使用autocommit模式，也就是说，当你执行一个更新操作后，MySQL会立刻将结果进行提交。set autocommit=0;</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//0.开始事务</span><br><span class="line"><span class="keyword">begin</span>;/<span class="keyword">begin</span> <span class="keyword">work</span>;/<span class="keyword">start</span> <span class="keyword">transaction</span>; (三者选一就可以)</span><br><span class="line">//1.查询出商品信息</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">status</span> <span class="keyword">from</span> t_goods <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br><span class="line">//2.根据商品信息生成订单</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_orders (<span class="keyword">id</span>,goods_id) <span class="keyword">values</span> (<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line">//3.修改商品status为2</span><br><span class="line"><span class="keyword">update</span> t_goods <span class="keyword">set</span> <span class="keyword">status</span>=<span class="number">2</span>;</span><br><span class="line">//4.提交事务</span><br><span class="line"><span class="keyword">commit</span>;/<span class="keyword">commit</span> <span class="keyword">work</span>;</span><br></pre></td></tr></table></figure>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;上面的查询语句中，我们使用了select…for update的方式，这样就通过开启排他锁的方式实现了悲观锁。此时在t_goods表中，id为1的 那条数据就被我们锁定了，其它的事务必须等本次事务提交之后才能执行。这样我们可以保证当前的数据不会被其它事务修改。</p>
+<blockquote>
+<p>使用select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认行级锁。行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁把整张表锁住，这点需要注意。</p>
+</blockquote>
+<h3 id="悲观锁的优点与不足"><a href="#悲观锁的优点与不足" class="headerlink" title="悲观锁的优点与不足"></a>悲观锁的优点与不足</h3><p>&nbsp; &nbsp; &nbsp; &nbsp;悲观并发控制实际上是“先取锁再访问”的保守策略，为数据处理的安全提供了保证。但是在效率方面，处理加锁的机制会让数据库产生额外的开销，还有增加了产生死锁的机率；另外，在只读型事务处理中由于不会产生冲突，没必要使用锁，这样做只能增加系统负载；再者会降低程序并行性，一个事务如果锁定了某行数据，其他事务就必须等待该事务处理完才可以继续操作。</p>
+<h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><blockquote>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在关系数据库管理系统里，乐观并发控制（又名“乐观锁”，Optimistic Concurrency Control，缩写“OCC”）是一种并发控制的方法。它假设多用户并发的事务在处理时不会彼此相互影响，各事务能够在不产生锁的情况下处理各自影响的那部分数据。在提交数据更新之前，每个事务会先检查在该事务读取数据后，有没有其他事务又修改了该数据。如果其他事务有更新的话，正在提交的事务会进行回滚。乐观事务控制最早是由孔祥重（H.T.Kung）教授提出。</p>
+</blockquote>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;相对于悲观锁而言，乐观锁（Optimistic Lock）假定认为数据操作一般情况下不会发生冲突，所以在提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。java.util.concurrent 包中 CompareAndSet (CAS，失败-重试) 就是一种乐观锁机制。<br>相对于悲观锁，在对数据库进行处理的时候，乐观锁并不会使用数据库提供的锁机制。一般的实现&nbsp; &nbsp; &nbsp; &nbsp;乐观锁的方式就是记录数据版本，或者使用时间戳。</p>
+<blockquote>
+<p>记录数据版本，即为为数据增加的一个版本标识。当读取数据时，将版本标识的值一同读出，数据每更新一次，同时对版本标识进行更新。当我们提交更新的时候，会先对比数据库表对应记录的当前版本信息与第一次取出来的版本标识，如果数据库表当前版本号与第一次取出来的版本标识值相等，则予以更新，否则认为是过期数据。</p>
+</blockquote>
+<h3 id="使用版本号实现乐观锁"><a href="#使用版本号实现乐观锁" class="headerlink" title="使用版本号实现乐观锁"></a>使用版本号实现乐观锁</h3><p>&nbsp; &nbsp; &nbsp; &nbsp;使用版本号时，可以在数据初始化时指定一个版本号，每次对数据的更新操作都对版本号执行+1操作。并判断当前版本号是不是该数据的最新的版本号。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.查询出商品信息</span><br><span class="line"><span class="keyword">select</span> (<span class="keyword">status</span>,<span class="keyword">status</span>,<span class="keyword">version</span>) <span class="keyword">from</span> t_goods <span class="keyword">where</span> <span class="keyword">id</span>=#&#123;<span class="keyword">id</span>&#125;</span><br><span class="line"><span class="number">2.</span>根据商品信息生成订单</span><br><span class="line"><span class="number">3.</span>修改商品<span class="keyword">status</span>为<span class="number">2</span></span><br><span class="line"><span class="keyword">update</span> t_goods </span><br><span class="line"><span class="keyword">set</span> <span class="keyword">status</span>=<span class="number">2</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span>=#&#123;<span class="keyword">id</span>&#125; <span class="keyword">and</span> <span class="keyword">version</span>=#&#123;<span class="keyword">version</span>&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="乐观锁的优点与不足"><a href="#乐观锁的优点与不足" class="headerlink" title="乐观锁的优点与不足"></a>乐观锁的优点与不足</h3><p>&nbsp; &nbsp; &nbsp; &nbsp;乐观并发控制相信事务之间的数据竞争(Data Race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。但如果直接简单这么做，还是有可能会遇到不可预期的结果，例如两个事务都读取了数据库的某一行，经过修改以后写回数据库，这时就遇到了问题。</p>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      
+        <i class="iconfont icon-category"></i>       
+        <a class="category-link" href="/categories/数据库/">数据库</a> 	
+     
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/Database/">Database</a> <a class="tag-link" href="/tags/Lock/">Lock</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">Hi, nice to meet you.</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+        
+
+
+
+
+<span class="donate-btn" title="赞赏">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/donate2.png" alt="No Donate Image!">	
+	</div>
+
+	<span class="donate-word">生活总是充满惊喜</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat" style="cursor:pointer"></span>&nbsp;&nbsp;
+		<span class="iconfont icon-donate-alipay" style="cursor:pointer"></span>
+	</div>
+
+</div>
+
+ 
+        
+	
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
+	
+	<span class="share-btn" title="分享">
+		<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-tumblr -mob-share-tumblr"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2017/10/21/新建文件夹/数据库的事务隔离级别/" data-hover="数据库的事务隔离级别">上一篇</a>      
+            
+        
+      
+        
+        <a href="/2017/10/05/数据库的锁机制/" data-hover="数据库的锁机制"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: 'qn6gri9c4QxH9F1Np1F2YJ5K-gzGzoHsz',
+        app_key: '7H7or8956JshFahQvPgGg1yy',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
+    </script>
+	
+</article>
+
+
+	<div id="toc">		
+
+		<div class="toc-container">	
+
+		<span class="toc-contents"> 
+			目录
+		</span>
+
+		<ul class="toc-list"></ul>
+
+		</div>
+
+	</div>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+
+        
+        <div class="search-container sildeUpMin">
+
+
+            <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+          
+            </div>
+              
+            <div id="search-result" class="search-result"></div>
+
+        </div>
+ 
+
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/categories">分类
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2017-
+		
+		2018		
+	
+		&nbsp;CodingCow
+		<br>
+
+		Powered By
+		<a href="https://hexo.io/" target="_blank">Hexo</a>
+		<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+		</div>			
+	 
+</footer>   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>

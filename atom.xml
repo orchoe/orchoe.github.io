@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://codingcow.com/"/>
-  <updated>2018-06-17T03:52:20.544Z</updated>
+  <updated>2018-06-17T18:21:23.982Z</updated>
   <id>http://codingcow.com/</id>
   
   <author>
@@ -17,11 +17,97 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spark入门介绍</title>
+    <link href="http://codingcow.com/2018/05/27/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Spark%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://codingcow.com/2018/05/27/新建文件夹/Spark入门介绍/</id>
+    <published>2018-05-27T15:16:34.000Z</published>
+    <updated>2018-06-17T18:21:23.982Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://codingcow.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="BigData" scheme="http://codingcow.com/tags/BigData/"/>
+    
+      <category term="Spark" scheme="http://codingcow.com/tags/Spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka和ActiveMQ对比分析</title>
+    <link href="http://codingcow.com/2018/05/02/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Kafka%E5%92%8CActiveMQ%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90/"/>
+    <id>http://codingcow.com/2018/05/02/新建文件夹/Kafka和ActiveMQ对比分析/</id>
+    <published>2018-05-02T14:17:09.000Z</published>
+    <updated>2018-06-17T18:25:24.187Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="消息队列" scheme="http://codingcow.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    
+    
+      <category term="MQ" scheme="http://codingcow.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://codingcow.com/tags/Kafka/"/>
+    
+      <category term="ActiveMQ" scheme="http://codingcow.com/tags/ActiveMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Solr轻松入门</title>
+    <link href="http://codingcow.com/2018/04/27/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Solr%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/"/>
+    <id>http://codingcow.com/2018/04/27/新建文件夹/Solr轻松入门/</id>
+    <published>2018-04-27T13:49:52.000Z</published>
+    <updated>2018-06-17T18:23:09.174Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="全文检索" scheme="http://codingcow.com/categories/%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/"/>
+    
+    
+      <category term="Solr" scheme="http://codingcow.com/tags/Solr/"/>
+    
+      <category term="Index" scheme="http://codingcow.com/tags/Index/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot集成MongoDB</title>
     <link href="http://codingcow.com/2018/03/09/SpringBoot%E9%9B%86%E6%88%90MongoDB/"/>
     <id>http://codingcow.com/2018/03/09/SpringBoot集成MongoDB/</id>
     <published>2018-03-09T14:56:34.000Z</published>
-    <updated>2018-06-17T03:52:20.544Z</updated>
+    <updated>2018-06-17T16:51:01.305Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/images/springboot_mongo.jpg" alt="Alt text"></p><h1 id="（-gt-﹏-lt-）"><a href="#（-gt-﹏-lt-）" class="headerlink" title="（&gt;﹏&lt;）"></a>（&gt;﹏&lt;）</h1><p>&nbsp; &nbsp; &nbsp; &nbsp; 最近在做日志采集的工作中用到了MongoDB这款NoSQL数据库，相较于常见的RDBMS灵活且快速；而且非结构化的数据存储格式也极为适合一些应用场景，既节省内存又能提高读写速度。了解如何将MongoDB集成到SpringBoot这样一款非常流行的轻量、快速的开发框架很有必要。</p><h2 id="创建Spring-Boot工程并导入Maven依赖"><a href="#创建Spring-Boot工程并导入Maven依赖" class="headerlink" title="创建Spring Boot工程并导入Maven依赖"></a>创建Spring Boot工程并导入Maven依赖</h2><blockquote><p>注：示例代码使用的Spring Boot版本为：2.0.1.RELEASE  </p></blockquote><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="修改配置文件-application-yml"><a href="#修改配置文件-application-yml" class="headerlink" title="修改配置文件 application.yml"></a>修改配置文件 application.yml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  data:</span></span><br><span class="line"><span class="attr">    mongodb:</span></span><br><span class="line"><span class="attr">      host:</span> <span class="number">192.168</span><span class="number">.109</span><span class="number">.128</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">27017</span></span><br><span class="line"><span class="attr">      database:</span> <span class="string">test</span></span><br></pre></td></tr></table></figure><h2 id="创建Employee实体"><a href="#创建Employee实体" class="headerlink" title="创建Employee实体"></a>创建Employee实体</h2><blockquote><p>注：Employee 映射 Document  </p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Document</span>(collection = <span class="string">"employee"</span>) <span class="comment">// 集合名</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Double salary;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Date birthday;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 省略 getter/setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="创建MongoRepository"><a href="#创建MongoRepository" class="headerlink" title="创建MongoRepository"></a>创建MongoRepository</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.orchoe.repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.orchoe.entity.Employee;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.mongodb.core.MongoTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.mongodb.core.query.Criteria;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.mongodb.core.query.Query;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Austin</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2018/3/07 16:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MongoRepository</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MongoTemplate mongoTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertOne</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">        mongoTemplate.insert(employee);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteOne</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">        mongoTemplate.remove(employee);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findOne</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mongoTemplate.findById(id,Employee.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">findAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mongoTemplate.findAll(Employee.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">findByName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mongoTemplate.find(Query.query(Criteria.where(<span class="string">"name"</span>).is(name)),Employee.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="创建测试类"><a href="#创建测试类" class="headerlink" title="创建测试类"></a>创建测试类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.orchoe.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.orchoe.repository.MongoRepository;</span><br><span class="line"><span class="keyword">import</span> com.orchoe.entity.Employee;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootMongodbApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> MongoRepository mongoRepository;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mongoRepository.insertOne(<span class="keyword">new</span> Employee(<span class="string">"zhangsan"</span>, <span class="number">2000.0</span>D, <span class="keyword">new</span> Date()));</span><br><span class="line">        List&lt;Employee&gt; employees = mongoRepository.findAll();</span><br><span class="line">        employees.forEach(employee -&gt; System.out.println(employee));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -46,21 +132,100 @@
   </entry>
   
   <entry>
-    <title>HashMao原理分析</title>
-    <link href="http://codingcow.com/2017/12/21/HashMap%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
-    <id>http://codingcow.com/2017/12/21/HashMap原理分析/</id>
-    <published>2017-12-21T11:56:34.000Z</published>
-    <updated>2018-06-17T03:59:42.701Z</updated>
+    <title>MongoDB的优点和缺点</title>
+    <link href="http://codingcow.com/2018/02/22/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/MongoDB%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9/"/>
+    <id>http://codingcow.com/2018/02/22/新建文件夹/MongoDB的优点和缺点/</id>
+    <published>2018-02-22T14:32:17.000Z</published>
+    <updated>2018-06-17T18:23:34.976Z</updated>
     
-    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。</p><h2 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; 在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。<br>从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一<br>个HashMap的时候，就会初始化一个数组。</p><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。&lt;/p&gt;
-&lt;h2 id=&quot;HashMa
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
       
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MongoDB" scheme="http://codingcow.com/tags/MongoDB/"/>
+    
+      <category term="NoSQL" scheme="http://codingcow.com/tags/NoSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis解决分布式会话问题</title>
+    <link href="http://codingcow.com/2018/02/07/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Redis%E8%A7%A3%E5%86%B3%E5%88%86%E5%B8%83%E5%BC%8F%E4%BC%9A%E8%AF%9D%E9%97%AE%E9%A2%98/"/>
+    <id>http://codingcow.com/2018/02/07/新建文件夹/Redis解决分布式会话问题/</id>
+    <published>2018-02-07T08:36:14.000Z</published>
+    <updated>2018-06-17T18:23:40.297Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="NoSQL" scheme="http://codingcow.com/tags/NoSQL/"/>
+    
+      <category term="Redis" scheme="http://codingcow.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM的类加载机制</title>
+    <link href="http://codingcow.com/2017/12/23/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>http://codingcow.com/2017/12/23/新建文件夹/JVM的类加载机制/</id>
+    <published>2017-12-23T12:53:34.000Z</published>
+    <updated>2018-06-17T16:56:20.947Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Java 虚拟机" scheme="http://codingcow.com/categories/Java-%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+      <category term="JVM" scheme="http://codingcow.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HashMap原理分析(JDK1.8)</title>
+    <link href="http://codingcow.com/2017/12/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/HashMap%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90(JDK1.8)/"/>
+    <id>http://codingcow.com/2017/12/21/新建文件夹/HashMap原理分析(JDK1.8)/</id>
+    <published>2017-12-21T11:56:34.000Z</published>
+    <updated>2018-06-17T16:54:37.384Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。</p><h2 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; 在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。<br><img src="/images/hashmap.png" alt="Alt text"><br>&nbsp; &nbsp; &nbsp; &nbsp; 从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一个HashMap的时候，就会初始化一个数组。<br><a id="more"></a><br>我们通过JDK中的HashMap源码进行一些学习，首先看一下构造函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> + initialCapacity);</span><br><span class="line">        <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">            initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">        <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +loadFactor);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Find a power of 2 &gt;= initialCapacity</span></span><br><span class="line">        <span class="keyword">int</span> capacity = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (capacity &lt; initialCapacity)</span><br><span class="line">            capacity &lt;&lt;= <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">        threshold = (<span class="keyword">int</span>)Math.min(capacity * loadFactor, MAXIMUM_CAPACITY + <span class="number">1</span>);</span><br><span class="line">        table = <span class="keyword">new</span> Entry[capacity];</span><br><span class="line">        useAltHashing = sun.misc.VM.isBooted() &amp;&amp;</span><br><span class="line">                (capacity &gt;= Holder.ALTERNATIVE_HASHING_THRESHOLD);</span><br><span class="line">        init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>我们着重看一下第18行代码table = new Entry[capacity];。这不就是Java中数组的创建方式吗？也就是说在构造函数中，其创建了一个Entry的数组，其大小为capacity（目前我们还不需要太了解该变量含义），那么Entry又是什么结构呢？看一下源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* The table, resized as necessary. Length MUST Always be a power of two.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">transient</span> Entry[] table;</span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"><span class="keyword">final</span> K key;</span><br><span class="line">V value;</span><br><span class="line">Entry&lt;K,V&gt; next;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。&lt;/p&gt;
+&lt;h2 id=&quot;HashMap的数据结构&quot;&gt;&lt;a href=&quot;#HashMap的数据结构&quot; class=&quot;headerlink&quot; title=&quot;HashMap的数据结构&quot;&gt;&lt;/a&gt;HashMap的数据结构&lt;/h2&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。&lt;br&gt;&lt;img src=&quot;/images/hashmap.png&quot; alt=&quot;Alt text&quot;&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一个HashMap的时候，就会初始化一个数组。&lt;br&gt;
     
     </summary>
     
@@ -68,6 +233,239 @@
     
     
       <category term="HashMap" scheme="http://codingcow.com/tags/HashMap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM中的垃圾回收算法</title>
+    <link href="http://codingcow.com/2017/12/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/JVM%E4%B8%AD%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/"/>
+    <id>http://codingcow.com/2017/12/21/新建文件夹/JVM中的垃圾回收算法/</id>
+    <published>2017-12-21T11:56:34.000Z</published>
+    <updated>2018-06-17T17:08:42.430Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Java 虚拟机" scheme="http://codingcow.com/categories/Java-%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+      <category term="JVM" scheme="http://codingcow.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二叉查找树和红黑树</title>
+    <link href="http://codingcow.com/2017/12/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%E5%92%8C%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    <id>http://codingcow.com/2017/12/21/新建文件夹/二叉查找树和红黑树/</id>
+    <published>2017-12-21T11:56:34.000Z</published>
+    <updated>2018-06-17T18:20:01.167Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="Tree" scheme="http://codingcow.com/tags/Tree/"/>
+    
+      <category term="Binary Tree" scheme="http://codingcow.com/tags/Binary-Tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈线程中的wait()和sleep()</title>
+    <link href="http://codingcow.com/2017/12/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E6%B5%85%E8%B0%88%E7%BA%BF%E7%A8%8B%E4%B8%AD%E7%9A%84wait()%E5%92%8Csleep()/"/>
+    <id>http://codingcow.com/2017/12/21/新建文件夹/浅谈线程中的wait()和sleep()/</id>
+    <published>2017-12-21T11:56:34.000Z</published>
+    <updated>2018-06-17T18:18:42.438Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Core Java基础" scheme="http://codingcow.com/categories/Core-Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Thread" scheme="http://codingcow.com/tags/Thread/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL中的几种引擎介绍</title>
+    <link href="http://codingcow.com/2017/12/18/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/MySQL%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BC%95%E6%93%8E%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://codingcow.com/2017/12/18/新建文件夹/MySQL中的几种引擎介绍/</id>
+    <published>2017-12-18T12:53:34.000Z</published>
+    <updated>2018-06-17T18:23:37.731Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MySQL" scheme="http://codingcow.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库的事务隔离级别</title>
+    <link href="http://codingcow.com/2017/10/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Dubbo%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
+    <id>http://codingcow.com/2017/10/21/新建文件夹/Dubbo原理分析/</id>
+    <published>2017-10-21T14:56:47.000Z</published>
+    <updated>2018-06-17T18:18:11.726Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Database" scheme="http://codingcow.com/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库的事务隔离级别</title>
+    <link href="http://codingcow.com/2017/10/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Shiro%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/"/>
+    <id>http://codingcow.com/2017/10/21/新建文件夹/Shiro轻松入门/</id>
+    <published>2017-10-21T14:56:47.000Z</published>
+    <updated>2018-06-17T18:18:11.726Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Database" scheme="http://codingcow.com/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库的事务隔离级别</title>
+    <link href="http://codingcow.com/2017/10/21/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"/>
+    <id>http://codingcow.com/2017/10/21/新建文件夹/数据库的事务隔离级别/</id>
+    <published>2017-10-21T14:56:47.000Z</published>
+    <updated>2018-06-17T18:48:33.491Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; &nbsp; &nbsp; &nbsp;数据库事务的ACID特性</p><ol><li>事务的四个特性<br>数据库事务（Transaction）是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。一方面，当多个应用程序并发访问数据库时，事务可以在应用程序间提供一个隔离方法，防止互相干扰。另一方面，事务为数据库操作序列提供了一个从失败恢复正常的方法。</li></ol><p>事务具有四个特性：原子性（Atomicity）、一致性（Consistency）、隔离型（Isolation）、持久性（Durability），简称ACID。</p><p>1.1 原子性（Atomicity）<br>事务的原子性是指事务中的操作不可拆分，只允许全部执行或者全部不执行。</p><p>1.2 一致性（Consistency）<br>事务的一致性是指事务的执行不能破坏数据库的一致性，一致性也称为完整性。一个事务在执行后，数据库必须从一个一致性状态转变为另一个一致性状态。</p><p>1.3 隔离型（Isolation）<br>事务的隔离型是指并发的事务相互隔离，不能互相干扰。</p><p>1.4 持久性（Durability）<br>事务的持久性是指事务一旦提交，对数据的状态变更应该被永久保存。</p><p>数据库事务隔离级别<br>原文链接：数据库事务隔离级别<br>数据库事务的隔离级别有4个，由低到高依次为Read uncommitted 、Read committed 、Repeatable read 、Serializable ，这四个级别可以逐个解决脏读 、不可重复读 、幻读 这几类问题。</p><p>√: 可能出现    ×: 不会出现</p><pre><code>脏读    不可重复读    幻读</code></pre><p>Read uncommitted    √    √    √<br>Read committed    ×    √    √<br>Repeatable read    ×    ×    √<br>Serializable    ×    ×    ×</p><p>注意：我们讨论隔离级别的场景，主要是在多个事务并发 的情况下，因此，接下来的讲解都围绕事务并发。</p><h3 id="Read-Uncommitted-读未提交"><a href="#Read-Uncommitted-读未提交" class="headerlink" title="Read Uncommitted 读未提交"></a>Read Uncommitted 读未提交</h3><p>公司发工资了，领导把5000元打到singo的账号上，但是该事务并未提交，而singo正好去查看账户，发现工资已经到账，是5000元整，非常高 兴。可是不幸的是，领导发现发给singo的工资金额不对，是2000元，于是迅速回滚了事务，修改金额后，将事务提交，最后singo实际的工资只有 2000元，singo空欢喜一场。</p><p>出现上述情况，即我们所说的脏读 ，两个并发的事务，“事务A：领导给singo发工资”、“事务B：singo查询工资账户”，事务B读取了事务A尚未提交的数据。</p><p>当隔离级别设置为Read uncommitted 时，就可能出现脏读，如何避免脏读，请看下一个隔离级别。</p><h3 id="Read-Committed-读提交"><a href="#Read-Committed-读提交" class="headerlink" title="Read Committed 读提交"></a>Read Committed 读提交</h3><p>singo拿着工资卡去消费，系统读取到卡里确实有2000元，而此时她的老婆也正好在网上转账，把singo工资卡的2000元转到另一账户，并在 singo之前提交了事务，当singo扣款时，系统检查到singo的工资卡已经没有钱，扣款失败，singo十分纳闷，明明卡里有钱，为 何……</p><p>出现上述情况，即我们所说的不可重复读 ，两个并发的事务，“事务A：singo消费”、“事务B：singo的老婆网上转账”，事务A事先读取了数据，事务B紧接了更新了数据，并提交了事务，而事务A再次读取该数据时，数据已经发生了改变。</p><p>当隔离级别设置为Read committed 时，避免了脏读，但是可能会造成不可重复读。</p><blockquote><p>大多数数据库的默认级别就是Read Committed，比如Sql Server , Oracle。</p></blockquote><h3 id="Repeatable-Read-重复读"><a href="#Repeatable-Read-重复读" class="headerlink" title="Repeatable Read 重复读"></a>Repeatable Read 重复读</h3><p>当隔离级别设置为Repeatable read 时，可以避免不可重复读。当singo拿着工资卡去消费时，一旦系统开始读取工资卡信息（即事务开始），singo的老婆就不可能对该记录进行修改，也就是singo的老婆不能在此时转账。</p><p>虽然Repeatable read避免了不可重复读，但还有可能出现幻读 。</p><p>singo的老婆工作在银行部门，她时常通过银行内部系统查看singo的信用卡消费记录。有一天，她正在查询到singo当月信用卡的总消费金额 （select sum(amount) from transaction where month = 本月）为80元，而singo此时正好在外面胡吃海塞后在收银台买单，消费1000元，即新增了一条1000元的消费记录（insert transaction … ），并提交了事务，随后singo的老婆将singo当月信用卡消费的明细打印到A4纸上，却发现消费总额为1080元，singo的老婆很诧异，以为出 现了幻觉，幻读就这样产生了。</p><blockquote><p>注：Mysql的默认隔离级别就是Repeatable Read。</p></blockquote><h3 id="Serializable-序列化"><a href="#Serializable-序列化" class="headerlink" title="Serializable 序列化"></a>Serializable 序列化</h3><p>Serializable 是最高的事务隔离级别，同时代价也花费最高，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻像读。</p><p>设置事务级别：SET TRANSACTION ISOLATION LEVEL</p><p>开始事务：begin tran<br>mysql : begin;/begin work;/start transaction; </p><p>提交事务：COMMIT</p><p>回滚事务：ROLLBACK</p><p>创建事务保存点：SAVE TRANSACTION savepoint_name</p><p>回滚到事务点:ROLLBACK TRANSACTION savepoint_name</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;数据库事务的ACID特性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;事务的四个特性&lt;br&gt;数据库事务（Transaction）是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。一方面，当多个应用程序并发访问数据
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Database" scheme="http://codingcow.com/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>悲观锁和乐观锁</title>
+    <link href="http://codingcow.com/2017/10/06/%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81/"/>
+    <id>http://codingcow.com/2017/10/06/悲观锁和乐观锁/</id>
+    <published>2017-10-06T04:32:34.000Z</published>
+    <updated>2018-06-17T17:05:15.326Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title="@_@"></a>@_@</h1><p>&nbsp; &nbsp; &nbsp; &nbsp;悲观锁还是乐观锁是人们定义的一种概念，可以认为是一种思想。其实不仅仅是关系型数据库系统中有乐观锁和悲观锁的概念，像memcached、hibernate、tair等都有类似的概念。<br>&nbsp; &nbsp; &nbsp; &nbsp;针对于不同的业务场景，应该选用不同的并发控制方式。所以，不要把乐观并发控制和悲观并发控制狭义的理解为DBMS中的概念，更不要把他们和数据中提供的锁机制（行锁、表锁、排他锁、共享锁）混为一谈。其实，在DBMS中，悲观锁正是利用数据库本身提供的锁机制来实现的。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面具体介绍一下悲观锁和乐观锁。<br><a id="more"></a></p><h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><blockquote><p>&nbsp; &nbsp; &nbsp; &nbsp;在关系数据库管理系统里，悲观并发控制（又名“悲观锁”，Pessimistic Concurrency Control，缩写“PCC”）是一种并发控制的方法。它默认对每次数据操作加锁。如果一个事务执行的操作对某行数据应用了锁，那只有当这个事务把锁释放，其他事务才能够执行与该锁冲突的操作。悲观并发控制主要用于数据争用激烈的环境，以及发生并发冲突时使用锁保护数据的成本要低于回滚事务的成本的环境中。<br>&nbsp; &nbsp; &nbsp; &nbsp;悲观锁的实现，往往依靠数据库提供的锁机制（也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则，即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据）。</p></blockquote><h3 id="在数据库中，悲观锁的流程如下："><a href="#在数据库中，悲观锁的流程如下：" class="headerlink" title="在数据库中，悲观锁的流程如下："></a>在数据库中，悲观锁的流程如下：</h3><p>1) 在对任意记录进行修改前，先尝试为该记录加上排他锁（Exclusive Lock）。<br>2) 如果加锁失败，说明该记录正在被修改，那么当前查询可能要等待或者抛出异常。 具体响应方式由开发者根据实际需要决定。<br>3) 如果成功加锁，那么就可以对记录做修改，事务完成后就会解锁了。<br>4) 其间如果有其他对该记录做修改或加排他锁的操作，都会等待我们解锁或直接抛出异常。</p><h3 id="MySQL-InnoDB-中使用悲观锁"><a href="#MySQL-InnoDB-中使用悲观锁" class="headerlink" title="MySQL(InnoDB)中使用悲观锁"></a>MySQL(InnoDB)中使用悲观锁</h3><blockquote><p>要使用悲观锁，我们必须关闭mysql数据库的自动提交属性，因为MySQL默认使用autocommit模式，也就是说，当你执行一个更新操作后，MySQL会立刻将结果进行提交。set autocommit=0;</p></blockquote><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//0.开始事务</span><br><span class="line"><span class="keyword">begin</span>;/<span class="keyword">begin</span> <span class="keyword">work</span>;/<span class="keyword">start</span> <span class="keyword">transaction</span>; (三者选一就可以)</span><br><span class="line">//1.查询出商品信息</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">status</span> <span class="keyword">from</span> t_goods <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br><span class="line">//2.根据商品信息生成订单</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_orders (<span class="keyword">id</span>,goods_id) <span class="keyword">values</span> (<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line">//3.修改商品status为2</span><br><span class="line"><span class="keyword">update</span> t_goods <span class="keyword">set</span> <span class="keyword">status</span>=<span class="number">2</span>;</span><br><span class="line">//4.提交事务</span><br><span class="line"><span class="keyword">commit</span>;/<span class="keyword">commit</span> <span class="keyword">work</span>;</span><br></pre></td></tr></table></figure><p>&nbsp; &nbsp; &nbsp; &nbsp;上面的查询语句中，我们使用了select…for update的方式，这样就通过开启排他锁的方式实现了悲观锁。此时在t_goods表中，id为1的 那条数据就被我们锁定了，其它的事务必须等本次事务提交之后才能执行。这样我们可以保证当前的数据不会被其它事务修改。</p><blockquote><p>使用select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认行级锁。行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁把整张表锁住，这点需要注意。</p></blockquote><h3 id="悲观锁的优点与不足"><a href="#悲观锁的优点与不足" class="headerlink" title="悲观锁的优点与不足"></a>悲观锁的优点与不足</h3><p>&nbsp; &nbsp; &nbsp; &nbsp;悲观并发控制实际上是“先取锁再访问”的保守策略，为数据处理的安全提供了保证。但是在效率方面，处理加锁的机制会让数据库产生额外的开销，还有增加了产生死锁的机率；另外，在只读型事务处理中由于不会产生冲突，没必要使用锁，这样做只能增加系统负载；再者会降低程序并行性，一个事务如果锁定了某行数据，其他事务就必须等待该事务处理完才可以继续操作。</p><h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><blockquote><p>&nbsp; &nbsp; &nbsp; &nbsp;在关系数据库管理系统里，乐观并发控制（又名“乐观锁”，Optimistic Concurrency Control，缩写“OCC”）是一种并发控制的方法。它假设多用户并发的事务在处理时不会彼此相互影响，各事务能够在不产生锁的情况下处理各自影响的那部分数据。在提交数据更新之前，每个事务会先检查在该事务读取数据后，有没有其他事务又修改了该数据。如果其他事务有更新的话，正在提交的事务会进行回滚。乐观事务控制最早是由孔祥重（H.T.Kung）教授提出。</p></blockquote><p>&nbsp; &nbsp; &nbsp; &nbsp;相对于悲观锁而言，乐观锁（Optimistic Lock）假定认为数据操作一般情况下不会发生冲突，所以在提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。java.util.concurrent 包中 CompareAndSet (CAS，失败-重试) 就是一种乐观锁机制。<br>相对于悲观锁，在对数据库进行处理的时候，乐观锁并不会使用数据库提供的锁机制。一般的实现&nbsp; &nbsp; &nbsp; &nbsp;乐观锁的方式就是记录数据版本，或者使用时间戳。</p><blockquote><p>记录数据版本，即为为数据增加的一个版本标识。当读取数据时，将版本标识的值一同读出，数据每更新一次，同时对版本标识进行更新。当我们提交更新的时候，会先对比数据库表对应记录的当前版本信息与第一次取出来的版本标识，如果数据库表当前版本号与第一次取出来的版本标识值相等，则予以更新，否则认为是过期数据。</p></blockquote><h3 id="使用版本号实现乐观锁"><a href="#使用版本号实现乐观锁" class="headerlink" title="使用版本号实现乐观锁"></a>使用版本号实现乐观锁</h3><p>&nbsp; &nbsp; &nbsp; &nbsp;使用版本号时，可以在数据初始化时指定一个版本号，每次对数据的更新操作都对版本号执行+1操作。并判断当前版本号是不是该数据的最新的版本号。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.查询出商品信息</span><br><span class="line"><span class="keyword">select</span> (<span class="keyword">status</span>,<span class="keyword">status</span>,<span class="keyword">version</span>) <span class="keyword">from</span> t_goods <span class="keyword">where</span> <span class="keyword">id</span>=#&#123;<span class="keyword">id</span>&#125;</span><br><span class="line"><span class="number">2.</span>根据商品信息生成订单</span><br><span class="line"><span class="number">3.</span>修改商品<span class="keyword">status</span>为<span class="number">2</span></span><br><span class="line"><span class="keyword">update</span> t_goods </span><br><span class="line"><span class="keyword">set</span> <span class="keyword">status</span>=<span class="number">2</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span>=#&#123;<span class="keyword">id</span>&#125; <span class="keyword">and</span> <span class="keyword">version</span>=#&#123;<span class="keyword">version</span>&#125;;</span><br></pre></td></tr></table></figure></p><h3 id="乐观锁的优点与不足"><a href="#乐观锁的优点与不足" class="headerlink" title="乐观锁的优点与不足"></a>乐观锁的优点与不足</h3><p>&nbsp; &nbsp; &nbsp; &nbsp;乐观并发控制相信事务之间的数据竞争(Data Race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。但如果直接简单这么做，还是有可能会遇到不可预期的结果，例如两个事务都读取了数据库的某一行，经过修改以后写回数据库，这时就遇到了问题。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;@_@&quot;&gt;&lt;/a&gt;@_@&lt;/h1&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;悲观锁还是乐观锁是人们定义的一种概念，可以认为是一种思想。其实不仅仅是关系型数据库系统中有乐观锁和悲观锁的概念，像memcached、hibernate、tair等都有类似的概念。&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;针对于不同的业务场景，应该选用不同的并发控制方式。所以，不要把乐观并发控制和悲观并发控制狭义的理解为DBMS中的概念，更不要把他们和数据中提供的锁机制（行锁、表锁、排他锁、共享锁）混为一谈。其实，在DBMS中，悲观锁正是利用数据库本身提供的锁机制来实现的。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面具体介绍一下悲观锁和乐观锁。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Lock" scheme="http://codingcow.com/tags/Lock/"/>
+    
+      <category term="Database" scheme="http://codingcow.com/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库的锁机制</title>
+    <link href="http://codingcow.com/2017/10/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%94%81%E6%9C%BA%E5%88%B6/"/>
+    <id>http://codingcow.com/2017/10/05/数据库的锁机制/</id>
+    <published>2017-10-05T14:16:03.000Z</published>
+    <updated>2018-06-17T17:26:16.331Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title="(=^_^=)"></a>(=^_^=)</h1><p>&nbsp; &nbsp; &nbsp; &nbsp;在计算机科学中，特别是程序设计、操作系统、多处理机和数据库等领域，并发控制（Concurrency Control）是确保及时纠正由并发操作导致的错误的一种机制。<br>&nbsp; &nbsp; &nbsp; &nbsp;数据库管理系统（DBMS）中的并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性。下面举例说明并发操作带来的数据不一致性问题：<br><a id="more"></a></p><blockquote><p>&nbsp; &nbsp; &nbsp; &nbsp;现有两处火车票售票点，同时读取某一趟列车车票数据库中车票余额为 X。两处售票点同时卖出一张车票，同时修改余额为 X - 1写回数据库，这样就造成了实际卖出两张火车票而数据库中的记录却只少了一张。 产生这种情况的原因是因为两个事务读入同一数据并同时修改，其中一个事务提交的结果破坏了另一个事务提交的结果，导致其数据的修改被丢失，破坏了事务的隔离性。并发控制要解决的就是这类问题。</p></blockquote><p>&nbsp; &nbsp; &nbsp; &nbsp;封锁、时间戳、乐观并发控制(乐观锁)和悲观并发控制（悲观锁）是并发控制主要采用的技术手段。</p><h2 id="加锁"><a href="#加锁" class="headerlink" title="加锁"></a>加锁</h2><p>&nbsp; &nbsp; &nbsp; &nbsp;当并发事务同时访问一个资源时，有可能导致数据不一致，因此需要一种机制来将数据访问顺序化，以保证数据库数据的一致性。锁就是其中的一种机制。在计算机科学中，锁是在执行多线程时用于强行限制资源访问的同步机制，即用于在并发控制中保证对互斥要求的满足。</p><h2 id="锁的分类-oracle"><a href="#锁的分类-oracle" class="headerlink" title="锁的分类(oracle)"></a>锁的分类(oracle)</h2><p>1）按操作划分，可分为DML锁、DDL锁<br>2）按锁的粒度划分，可分为表级锁、行级锁、页级锁（mysql）<br>3）按锁级别划分，可分为共享锁、排他锁<br>4）按加锁方式划分，可分为自动锁、显示锁<br>5）按使用方式划分，可分为乐观锁、悲观锁</p><blockquote><p>DML锁（又称 Data Lock，数据锁），用于保护数据的完整性，其中包括行级锁(Row Lock (TX锁))、表级锁(Table Lock (TM锁))。<br>DDL锁（又称 Dictionary Lock，数据字典锁），用于保护数据库对象的结构，如表、索引等的结构定义。包括排他DDL锁（Exclusive DDL Lock）、共享DDL锁（Share DDL Lock）、可中断解析锁（Breakable Parse Lock）。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;(=^_^=)&quot;&gt;&lt;/a&gt;(=^_^=)&lt;/h1&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在计算机科学中，特别是程序设计、操作系统、多处理机和数据库等领域，并发控制（Concurrency Control）是确保及时纠正由并发操作导致的错误的一种机制。&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;数据库管理系统（DBMS）中的并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性。下面举例说明并发操作带来的数据不一致性问题：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://codingcow.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Lock" scheme="http://codingcow.com/tags/Lock/"/>
+    
+      <category term="Database" scheme="http://codingcow.com/tags/Database/"/>
     
   </entry>
   

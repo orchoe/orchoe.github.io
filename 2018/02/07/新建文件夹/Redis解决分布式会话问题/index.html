@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   
   
-  <title>  HashMao原理分析 |   CodingCow </title>
+  <title>  Redis解决分布式会话问题 |   CodingCow </title>
 
  
   
@@ -79,20 +79,20 @@
 	<div class="post-header">
 
 	<p class="post-title">	
-		HashMao原理分析
+		Redis解决分布式会话问题
 	</p>
 			
 
 	<div class="meta-info">	
 	<span>
-		12月 21, 2017
+		2月 07, 2018
 	</span>
 
 	
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			493
+			25
 		</span>
 	
 </div>
@@ -105,15 +105,7 @@
 		
 
 			
-					<p>&nbsp; &nbsp; &nbsp; &nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。</p>
-<h2 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; 在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。<br>从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一<br>个HashMap的时候，就会初始化一个数组。</p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+					<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
   	
 					
 	  </div>     
@@ -123,13 +115,13 @@
 <div class="post-meta">
       
         <i class="iconfont icon-category"></i>       
-        <a class="category-link" href="/categories/Core-Java基础/">Core Java基础</a> 	
+        <a class="category-link" href="/categories/数据库/">数据库</a> 	
      
       	
 
       
         <i class="iconfont icon-tag"></i>     
-          <a class="tag-link" href="/tags/HashMap/">HashMap</a>    
+          <a class="tag-link" href="/tags/NoSQL/">NoSQL</a> <a class="tag-link" href="/tags/Redis/">Redis</a>    
       	
 </div>
 
@@ -150,7 +142,7 @@
 
 
 
-<span class="donate-btn">
+<span class="donate-btn" title="赞赏">
 	<span class="iconfont icon-donate"></span>
 </span>
 
@@ -176,10 +168,10 @@
  
         
 	
-<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
 	
-	<span class="share-btn">
-	<span class="iconfont icon-share"></span>
+	<span class="share-btn" title="分享">
+		<span class="iconfont icon-share"></span>
 	</span>
 
 
@@ -207,9 +199,12 @@
     <nav class="pf-paginator">
       
          
-          <a href="/2018/03/09/SpringBoot集成MongoDB/" data-hover="SpringBoot集成MongoDB">上一篇</a>      
+          <a href="/2018/02/22/新建文件夹/MongoDB的优点和缺点/" data-hover="MongoDB的优点和缺点">上一篇</a>      
             
         
+      
+        
+        <a href="/2017/12/23/新建文件夹/JVM的类加载机制/" data-hover="JVM的类加载机制"> 下一篇</a>
             
   </nav>   
   </div>
