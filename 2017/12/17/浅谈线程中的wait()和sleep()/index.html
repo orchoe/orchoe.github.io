@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  浅谈线程中的 Wait() 和 Sleep() |   CodingCow </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <!-- <a class="header-logo" href="/"></a> -->
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-categories" href="/categories">分类</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		浅谈线程中的 wait() 和 sleep()
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		12月 17, 2017
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			1932
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<h1 id="（￣︶￣）"><a href="#（￣︶￣）" class="headerlink" title="\（￣︶￣）/"></a>\（￣︶￣）/</h1><p>&nbsp; &nbsp; &nbsp; &nbsp; wait() 方法和 sleep() 方法都可以使线程挂起，起到的效果看似相同，但其实二者之间存在许多差异。 </p>
+<h3 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h3><p>(1) 都可以使线程在程序的调用处阻塞指定的毫秒数，然后回到可运行状态。</p>
+<p>(2) wait() 和 sleep() 都可以通过 interrupt() 方法打断线程的暂停状态（不建议使用该方法）。</p>
+<blockquote>
+<p>注：对线程对象调用 interrupt() 方法时，如果该线程对象处于 wait / sleep / join 状态时，该线程会立刻抛出 InterruptedException，在catch() {} 中直接 return 即可安全地结束线程；如果该线程正在执行的是普通代码，那么该线程不会抛出 InterruptedException。<br><a id="more"></a></p>
+</blockquote>
+<h3 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h3><p>(1) sleep() 是Thread类的static(静态)的方法。（ yield() 同样为静态方法）。<br>   wait() 是非静态方法，需要由线程对象来调用。（ 非静态方法还有 join(), notify(), notifyAll()等 )。</p>
+<p>(2) sleep()睡眠时，不会释放对象锁，有造成死锁的可能；<br>   wait() 等待时，释放对象锁，其他线程可以访问。</p>
+<p>(3) wait()、notify() 和 notifyAll() 只能在同步控制方法或者同步控制块里面使用，而 sleep() 可以在任何地方使用。</p>
+<p>(4) sleep() 必须捕获异常，而wait()，notify() 和 notifyAll() 不需要捕获异常</p>
+<blockquote>
+<p>在 sleep() 休眠时间期满后，该线程不一定会立即执行，这是因为其它线程可能正在运行而且没有被调度为放弃执行，除非此线程具有更高的优先级。<br> wait() 使用 notify() 或者 notifyAll() 或者指定睡眠时间来唤醒当前等待池中的线程。wiat() 必须放在synchronized block中，否则会在program runtime时抛出“java.lang.IllegalMonitorStateException”异常。</p>
+</blockquote>
+<h3 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h3><p>优先级越高代表被cpu执行的概率越大（1到10），一般1、5与10的差距是最大的。 因为是静态常量，因此需要加上类名 。</p>
+<blockquote>
+<p>字段摘要:Thread.MAX_PRIORITY，线程可以具有的最高优先级；Thread.MIN_PRIORITY，线程可以具有的最低优先级；Thread.NORM_PRIORITY，分配给线程的默认优先级，例如：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;<span class="number">50</span>;x++)&#123;</span><br><span class="line">        	System.out.println(Thread.currentThread().getName()+<span class="string">"......"</span>+x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JoinDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        MyThread mt = <span class="keyword">new</span> MyThread();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(mt);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(mt);</span><br><span class="line">        t1.start();</span><br><span class="line">        <span class="comment">//临时加入一个线程运算时可以使用join方法</span></span><br><span class="line">        t1.join();<span class="comment">//t1线程要申请加入进来运行，主线程等待t1终止之后再执行,即此时主线程处于冻结状态，是可以使用interrupt方法强制恢复回来的</span></span><br><span class="line">        t2.start();</span><br><span class="line">        t2.setPriority(Thread.MAX_PRIORITY);<span class="comment">//设置t2为最优先执行</span></span><br><span class="line">        <span class="comment">//t1.join();//t1线程申请加入；此时开启的线程是t1与t2，即t1与t2互相争夺执行权，但是主线程仅仅与t1线程相关联，在线程t1执行结束后主线程开始执行</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;<span class="number">50</span>;x++)&#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"......"</span>+x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Thread-yield-方法"><a href="#Thread-yield-方法" class="headerlink" title="Thread.yield() 方法"></a>Thread.yield() 方法</h3><p>yield() 方法：暂停当前正在执行的线程对象，并执行其他线程。<br>yield() 应该做的是让当前运行线程回到可运行状态，以允许具有相同优先级的其他线程获得运行机会。<br>因此，使用 yield() 的目的是让相同优先级的线程之间能适当的轮转执行。但是，实际中无法保证 yield() 达到让步目的，因为让步的线程还有可能被线程调度程序再次选中。</p>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      
+        <i class="iconfont icon-category"></i>       
+        <a class="category-link" href="/categories/Core-Java基础/">Core Java基础</a> 	
+     
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/Thread/">Thread</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">Hi, nice to meet you.</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+        
+
+
+
+
+<span class="donate-btn" title="赞赏">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/donate2.png" alt="No Donate Image!">	
+	</div>
+
+	<span class="donate-word">生活总是充满惊喜</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat" style="cursor:pointer"></span>&nbsp;&nbsp;
+		<span class="iconfont icon-donate-alipay" style="cursor:pointer"></span>
+	</div>
+
+</div>
+
+ 
+        
+	
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
+	
+	<span class="share-btn" title="分享">
+		<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-tumblr -mob-share-tumblr"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2017/12/18/MySQL中的几种引擎介绍/" data-hover="MySQL中的几种引擎介绍">上一篇</a>      
+            
+        
+      
+        
+        <a href="/2017/10/21/Dubbo的集群容错和负载均衡/" data-hover="Dubbo的集群容错和负载均衡"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: 'qn6gri9c4QxH9F1Np1F2YJ5K-gzGzoHsz',
+        app_key: '7H7or8956JshFahQvPgGg1yy',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
+    </script>
+	
+</article>
+
+
+	<div id="toc">		
+
+		<div class="toc-container">	
+
+		<span class="toc-contents"> 
+			目录
+		</span>
+
+		<ul class="toc-list"></ul>
+
+		</div>
+
+	</div>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+
+        
+        <div class="search-container sildeUpMin">
+
+
+            <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+          
+            </div>
+              
+            <div id="search-result" class="search-result"></div>
+
+        </div>
+ 
+
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/categories">分类
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2017-
+		
+		2018		
+	
+		&nbsp;CodingCow
+		<br>
+
+		Powered By
+		<a href="https://hexo.io/" target="_blank">Hexo</a>
+		<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+		</div>			
+	 
+</footer>   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>

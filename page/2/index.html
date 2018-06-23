@@ -102,7 +102,7 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2017/12/21/新建文件夹/JVM中的垃圾回收算法/">JVM中的垃圾回收算法</a>  
+	     <a class="article-title" href="/2017/12/21/二叉查找树和红黑树/">二叉查找树和红黑树</a>  
 	       
 		 
 
@@ -113,7 +113,9 @@
 		
 			<span class="iconfont icon-star"></span>		 
 			            
-			<a class="article-tag" href="/tags/JVM/">JVM</a>           
+			<a class="article-tag" href="/tags/Tree/">Tree</a>           
+			            
+			<a class="article-tag" href="/tags/Binary-Tree/">Binary Tree</a>           
 			
 		
 		</div>
@@ -125,14 +127,16 @@
 
     
 	<div class="article-excerpt">	
-		 
-			<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
-
+		
+			<h1 id="┐（─-─）┌"><a href="#┐（─-─）┌" class="headerlink" title="┐（─__─）┌"></a>┐（─__─）┌</h1><h2 id="二叉查找树（BST）的特性"><a href="#二叉查找树（BST）的特性" class="headerlink" title="二叉查找树（BST）的特性"></a>二叉查找树（BST）的特性</h2><p>(1) 左子树上所有结点的值均小于或等于它的根结点的值。</p>
+<p>(2) 右子树上所有结点的值均大于或等于它的根结点的值。</p>
+<p>(3) 左、右子树也分别为二叉排序树。</p>
+<p>下图中这棵树，就是一颗典型的二叉查找树：<br>
 		  	  
-	</div>
+	</p></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2017/12/21/新建文件夹/JVM中的垃圾回收算法/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/12/21/二叉查找树和红黑树/">阅读更多</a> 	</div>	
     
 </article>     
      	
@@ -143,7 +147,7 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2017/12/18/新建文件夹/MySQL中的几种引擎介绍/">MySQL中的几种引擎介绍</a>  
+	     <a class="article-title" href="/2017/12/18/MySQL中的几种引擎介绍/">MySQL中的几种引擎介绍</a>  
 	       
 		 
 
@@ -167,13 +171,111 @@
     
 	<div class="article-excerpt">	
 		 
-			<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
+			<h1 id="（￣∞￣）"><a href="#（￣∞￣）" class="headerlink" title="（￣∞￣）"></a>（￣∞￣）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎，还可以获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引擎。<strong>MySql的核心就是存储引擎</strong>。</p>
+<p><strong>存储引擎查看</strong></p>
+<p>MySQL给开发者提供了查询存储引擎的功能，我这里使用的是MySQL5.5，可以使用：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">ENGINES</span></span><br></pre></td></tr></table></figure></p>
+<p>命令来查看MySQL使用的引擎，命令的输出为（我用的Navicat Premium）：<br><img src="/images/mysql/storageEngine1.png" alt="img"><br>MySQL给用户提供了多种存储引擎，包括处理事务安全表的引擎和处理非事务安全表的引擎。</p>
+<p>如果要想查看数据库默认使用哪个引擎，可以通过使用命令：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'storage_engine'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>来查看，查询结果为：<br><img src="/images/mysql/storageEngine2.png" alt="img"></p>
+<h2 id="修改数据库引擎："><a href="#修改数据库引擎：" class="headerlink" title="修改数据库引擎："></a>修改数据库引擎：</h2><p>方式一：<br>修改配置文件my.ini<br>将mysql.ini另存为my.ini，在[mysqld]后面添加default-storage-engine=InnoDB，重启服务，数据库默认的引擎修改为InnoDB<br>方式二：<br>在建表的时候指定<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> mytbl(   </span><br><span class="line">   	<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,   </span><br><span class="line">  	 	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">50</span>)   </span><br><span class="line">)<span class="keyword">type</span>=MyISAM;</span><br></pre></td></tr></table></figure></p>
+<p>方式三：<br>建表后更改<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">type</span> = <span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>怎么查看修改成功</strong><br>方式一：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">status</span> <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></p>
+<p>方式二：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> table_name</span><br></pre></td></tr></table></figure></p>
+<p>方式三：<br>使用数据库管理工具啊。</p>
+<p>在MySQL中，不需要在整个服务器中使用同一种存储引擎，针对具体的要求，可以对每一个表使用不同的存储引擎。Support列的值表示某种引擎是否能使用：YES表示可以使用、NO表示不能使用、DEFAULT表示该引擎为当前默认的存储引擎 。下面来看一下其中几种常用的引擎。</p>
+<h2 id="InnoDB："><a href="#InnoDB：" class="headerlink" title="InnoDB："></a>InnoDB：</h2><p>定义：（默认的存储引擎）<br>InnoDB是一个事务型的存储引擎，有行级锁定和外键约束。<br>Innodb引擎提供了对数据库ACID（原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability））事务的支持，并且实现了SQL标准的四种隔离级别，关于数据库事务与其隔离级别的内容请见数据库事务与其隔离级别这类型的文章。该引擎还提供了行级锁和外键约束，它的设计目标是处理大容量数据库系统，它本身其实就是基于MySQL后台的完整数据库系统，MySQL运行时Innodb会在内存中建立缓冲池，用于缓冲数据和索引。但是该引擎不支持FULLTEXT类型的索引，而且它没有保存表的行数，当SELECT COUNT(*) FROM TABLE时需要扫描全表。当需要使用数据库事务时，该引擎当然是首选。由于锁的粒度更小，写操作不会锁定全表，所以在并发较高时，使用Innodb引擎会提升效率。但是使用行级锁也不是绝对的，如果在执行一个SQL语句时MySQL不能确定要扫描的范围，InnoDB表同样会锁全表。<br>//这个就是select锁表的一种，不明确主键。增删改查都可能会导致锁全表，在以后我们会详细列出。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> products <span class="keyword">WHERE</span> <span class="keyword">name</span>=<span class="string">'Mouse'</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure></p>
+<p>适用场景：<br>1）经常更新的表，适合处理多重并发的更新请求。<br>2）支持事务。<br>3）可以从灾难中恢复（通过bin-log日志等）。<br>4）外键约束。只有他支持外键。<br>5）支持自动增加列属性auto_increment。</p>
+<p>MySQL官方对 InnoDB 的讲解：<br>1）InnoDB给MySQL提供了具有提交、回滚和崩溃恢复能力的事务安全（ACID兼容）存储引擎。<br>2）InnoDB锁定在行级并且也在SELECT语句提供一个Oracle风格一致的非锁定读，这些特色增加了多用户部署和性能。没有在InnoDB中扩大锁定的需要，因为在InnoDB中行级锁定适合非常小的空间。<br>3）InnoDB也支持FOREIGN KEY强制。在SQL查询中，你可以自由地将InnoDB类型的表与其它MySQL的表的类型混合起来，甚至在同一个查询中也可以混合。<br>4）InnoDB是为处理巨大数据量时的最大性能设计，它的CPU效率可能是任何其它基于磁盘的关系数据库引擎所不能匹敌的。<br>5） InnoDB被用来在众多需要高性能的大型数据库站点上产生。</p>
+<h2 id="MyISAM："><a href="#MyISAM：" class="headerlink" title="MyISAM："></a>MyISAM：</h2><p>定义：<br>MyIASM是MySQL默认的引擎，但是它没有提供对数据库事务的支持，也不支持行级锁和外键，因此当INSERT(插入)或UPDATE(更新)数据时即写操作需要锁定整个表，效率便会低一些。<br>MyISAM 存储引擎独立于操作系统，也就是可以在windows上使用，也可以比较简单的将数据转移到linux操作系统上去。<br>意味着：引擎在创建表的时候，会创建三个文件，一个是.frm文件用于存储表的定义，一个是.MYD文件用于存储表的数据，另一个是.MYI文件，存储的是索引。操作系统对大文件的操作是比较慢的，这样将表分为三个文件，那么.MYD这个文件单独来存放数据自然可以优化数据库的查询等操作。有索引管理和字段管理。MyISAM还使用一种表格锁定的机制，来优化多个并发的读写操作，其代价是你需要经常运行OPTIMIZE TABLE命令，来恢复被更新机制所浪费的空间。</p>
+<p>适用场景：<br>1）不支持事务的设计，但是并不代表着有事务操作的项目不能用MyISAM存储引擎，可以在service层进行根据自己的业务需求进行相应的控制。<br>2）不支持外键的表设计。<br>3）查询速度很快，如果数据库insert和update的操作比较多的话比较适用。<br>4）整天 对表进行加锁的场景。<br>5）MyISAM极度强调快速读取操作。<br>6）MyIASM中存储了表的行数，于是SELECT COUNT(*) FROM TABLE时只需要直接读取已经保存好的值而不需要进行全表扫描。如果表的读操作远远多于写操作且不需要数据库事务的支持，那么MyIASM也是很好的选择。<br>缺点：<br>就是不能在表损坏后恢复数据。（是不能主动恢复）</p>
+<blockquote>
+<p>补充：ISAM索引方法–索引顺序存取方法<br>定义：<br>是一个定义明确且历经时间考验的数据表格管理方法，它在设计之时就考虑到 数据库被查询的次&gt; 数要远大于更新的次数。<br>特性：<br>ISAM执行读取操作的速度很快，而且不占用大量的内存和存储资源。<br>在设计之初就预想数据组织成有固定长度的记录，按顺序存储的。—ISAM是一种静态索引结构。<br>缺点：<br>1.它不 支持事务处理<br>2.也不能够容错。如果你的硬盘崩溃了，那么数据文件就无法恢复了。如果你正在把ISAM用在关键任务应用程序里，那就必须经常备份你所有的实 时数据，通过其复制特性，MYSQL能够支持这样的备份应用程序。</p>
+</blockquote>
+<h2 id="Memory（也叫HEAP）："><a href="#Memory（也叫HEAP）：" class="headerlink" title="Memory（也叫HEAP）："></a>Memory（也叫HEAP）：</h2><p>定义：<br>使用存在内存中的内容来创建表。每个MEMORY表只实际对应一个磁盘文件。MEMORY类型的表访问非常得快，因为它的数据是放在内存中的，并且默认使用HASH索引。<br>但是一旦服务关闭，表中的数据就会丢失掉。 HEAP允许只驻留在内存里的临时表格。驻留在内存里让HEAP要比ISAM和MYISAM都快，但是它所管理的数据是不稳定的，而且如果在关机之前没有进行保存，那么所有的数据都会丢失。在数据行被删除的时候，HEAP也不会浪费大量的空间。HEAP表格在你需要使用SELECT表达式来选择和操控数据的时候非常有用。</p>
+<p>适用场景：<br>1）那些内容变化不频繁的代码表，或者作为统计操作的中间结果表，便于高效地堆中间结果进行分析并得到最终的统计结果。<br>2）目标数据比较小，而且非常频繁的进行访问，在内存中存放数据，如果太大的数据会造成内存溢出。可以通过参数max_heap_table_size控制Memory表的大小，限制Memory表的最大的大小。<br>3）数据是临时的，而且必须立即可用得到，那么就可以放在内存中。<br>4）存储在Memory表中的数据如果突然间丢失的话也没有太大的关系。<br>注意： Memory同时支持散列索引和B树索引，B树索引可以使用部分查询和通配查询，也可以使用&lt;,&gt;和&gt;=等操作符方便数据挖掘，散列索引相等的比较快但是对于范围的比较慢很多。<br>特性要求：<br>1）要求存储的数据是数据长度不变的格式，比如，Blob和Text类型的数据不可用（长度不固定的）。<br>2）要记住，在用完表格之后就删除表格。</p>
+<h2 id="Archive"><a href="#Archive" class="headerlink" title="Archive"></a>Archive</h2><p>定义：<br>基本上用于数据归档；它的压缩比非常的高，存储空间大概是innodb的10-15分之一所以它用来存储历史数据非常的适合，由于它不支持索引同时也不能缓存索引和数据，所以它不适合作为并发访问表的存储引擎。Archivec存储引擎使用行锁来实现高并发插入操作，但是它不支持事务，其设计目标只是提供高速的插入和压缩功能。<br>Archiv存储引擎的特点：<br>1、往archive表插入的数据会使用zlib进行数据压缩，磁盘I/O更少，archive支持optimize table、 check table操作。<br>2、每个archive表在磁盘上存在两个文件 .frm(存储表定义) 和 .arz(存储数据)。</p>
+<p>3、archive存储引擎支持insert、replace和select操作，但是不支持update和delete。</p>
+<p>4、archive存储引擎支持blob、text等大字段类型。支持auto_increment自增列同时自增列可以不是唯一索引。</p>
+<p>5、archive支持auto_increment列，但是不支持往auto_increment列插入一个小于当前最大的值的值。</p>
+<p>6、archive不支持索引所以无法在archive表上创建主键、唯一索引、和一般的索引。</p>
+<p>7、Archive表比MyISAM表要小大约75%，比支持事务处理的InnoDB表小大约83%。当数据量非常大的时候（达到1.5GB这个量级，CPU又比较快的时候）Archive的插入性能表现会较MyISAM为佳。</p>
+<p>8、较小的空间占用，移植MySQL数据方便。当你需要把数据从一台MySQL服务器转移到另一台的时候，Archive表可以方便地移植到新的MySQL环境，你只需将保存Archive表的底层文件复制过去就可以了。</p>
+<h2 id="Mrg-Myisam：（分表的一种方式–水平分表）"><a href="#Mrg-Myisam：（分表的一种方式–水平分表）" class="headerlink" title="Mrg_Myisam：（分表的一种方式–水平分表）"></a>Mrg_Myisam：（分表的一种方式–水平分表）</h2><p>定义：<br>是一个相同的可以被当作一个来用的MyISAM表的集合。“相同”意味着所有表同样的列和索引信息。<br>也就是说，他将MyIsam引擎的多个表聚合起来，但是它的内部没有数据，真正的数据依然是MyIsam引擎的表中，但是可以直接进行查询、删除更新等操作。<br>比如：我们可能会遇到这样的问题，同一种类的数据会根据数据的时间分为多个表，如果这时候进行查询的话，就会比较麻烦，Merge可以直接将多个表聚合成一个表统一查询，然后再删除Merge表（删除的是定义），原来的数据不会影响。</p>
+<h2 id="Blackhole（黑洞引擎）"><a href="#Blackhole（黑洞引擎）" class="headerlink" title="Blackhole（黑洞引擎）"></a>Blackhole（黑洞引擎）</h2><p>定义<br>任何写入到此引擎的数据均会被丢弃掉， 不做实际存储；Select语句的内容永远是空。<br>他会丢弃所有的插入的数据，服务器会记录下Blackhole表的日志，所以可以用于复制数据到备份数据库。<br>使用场景：<br>1）验证dump file语法的正确性<br>2）以使用blackhole引擎来检测binlog功能所需要的额外负载<br>3）充当日志服务器</p>
+<h2 id="存储引擎的选择"><a href="#存储引擎的选择" class="headerlink" title="存储引擎的选择"></a>存储引擎的选择</h2><p>不同的存储引擎都有各自的特点，以适应不同的需求，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th><strong>功  能</strong></th>
+<th><strong>MyISAM</strong></th>
+<th><strong>Memory</strong></th>
+<th><strong>InnoDB</strong></th>
+<th><strong>Archive</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储限制</td>
+<td>256TB</td>
+<td>RAM</td>
+<td>64TB</td>
+<td>None</td>
+</tr>
+<tr>
+<td>支持事物</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>支持全文索引</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>支持数索引</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>支持哈希索引</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>支持数据缓存</td>
+<td>No</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>支持外键</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>如果要提供提交、回滚、崩溃恢复能力的事物安全（ACID兼容）能力，并要求实现并发控制，InnoDB是一个好的选择。</p>
+<p>如果数据表主要用来插入和查询记录，则MyISAM引擎能提供较高的处理效率。</p>
+<p>如果只是临时存放数据，数据量不大，并且不需要较高的数据安全性，可以选择将数据保存在内存中的Memory引擎，MySQL中使用该引擎作为临时表，存放查询的中间结果。</p>
+<p>如果只有INSERT和SELECT操作，可以选择Archive，Archive支持高并发的插入操作，但是本身不是事务安全的。Archive非常适合存储归档数据，如记录日志信息可以使用Archive。</p>
+<p>使用哪一种引擎需要灵活选择，<strong>一个数据库中多个表可以使用不同引擎以满足各种性能和实际需求</strong>，使用合适的存储引擎，将会提高整个数据库的性能。</p>
 
 		  	  
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2017/12/18/新建文件夹/MySQL中的几种引擎介绍/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/12/18/MySQL中的几种引擎介绍/">阅读更多</a> 	</div>	
     
 </article>     
      	
@@ -184,18 +286,18 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2017/10/21/新建文件夹/Shiro轻松入门/">数据库的事务隔离级别</a>  
+	     <a class="article-title" href="/2017/12/17/浅谈线程中的wait()和sleep()/">浅谈线程中的 wait() 和 sleep()</a>  
 	       
 		 
 
 		<div class="article-meta">
 		
-		10月 21, 2017
+		12月 17, 2017
 
 		
 			<span class="iconfont icon-star"></span>		 
 			            
-			<a class="article-tag" href="/tags/Database/">Database</a>           
+			<a class="article-tag" href="/tags/Thread/">Thread</a>           
 			
 		
 		</div>
@@ -207,14 +309,17 @@
 
     
 	<div class="article-excerpt">	
-		 
-			<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
-
+		
+			<h1 id="（￣︶￣）"><a href="#（￣︶￣）" class="headerlink" title="\（￣︶￣）/"></a>\（￣︶￣）/</h1><p>&nbsp; &nbsp; &nbsp; &nbsp; wait() 方法和 sleep() 方法都可以使线程挂起，起到的效果看似相同，但其实二者之间存在许多差异。 </p>
+<h3 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h3><p>(1) 都可以使线程在程序的调用处阻塞指定的毫秒数，然后回到可运行状态。</p>
+<p>(2) wait() 和 sleep() 都可以通过 interrupt() 方法打断线程的暂停状态（不建议使用该方法）。</p>
+<blockquote>
+<p>注：对线程对象调用 interrupt() 方法时，如果该线程对象处于 wait / sleep / join 状态时，该线程会立刻抛出 InterruptedException，在catch() {} 中直接 return 即可安全地结束线程；如果该线程正在执行的是普通代码，那么该线程不会抛出 InterruptedException。<br>
 		  	  
-	</div>
+	</p></blockquote></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2017/10/21/新建文件夹/Shiro轻松入门/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/12/17/浅谈线程中的wait()和sleep()/">阅读更多</a> 	</div>	
     
 </article>     
      	
@@ -225,7 +330,7 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2017/10/21/新建文件夹/Dubbo原理分析/">数据库的事务隔离级别</a>  
+	     <a class="article-title" href="/2017/10/21/Dubbo的集群容错和负载均衡/">Dubbo的集群容错和负载均衡</a>  
 	       
 		 
 
@@ -236,7 +341,7 @@
 		
 			<span class="iconfont icon-star"></span>		 
 			            
-			<a class="article-tag" href="/tags/Database/">Database</a>           
+			<a class="article-tag" href="/tags/Dubbo/">Dubbo</a>           
 			
 		
 		</div>
@@ -248,14 +353,16 @@
 
     
 	<div class="article-excerpt">	
-		 
-			<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
-
+		
+			<h1 id="o-O"><a href="#o-O" class="headerlink" title="o_O"></a>o_O</h1><h2 id="容错机制"><a href="#容错机制" class="headerlink" title="容错机制"></a>容错机制</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; Dubbo中常见容错机制包括 failover，failsafe，failfase，failback，forking，缺省为failover重试。</p>
+<p><font color="red"><strong>Failover  &nbsp;失败自动切换</strong></font><br>当出现失败，重试其它服务器。通常用于读操作，但重试会带来更长延迟。可通过retries=”2”来设置重试次数(不含第一次)。</p>
+<p><font color="red"><strong>Failfast  &nbsp;快速失败</strong></font><br>只发起一次调用，失败立即报错。通常用于非幂等性的写操作，比如新增记录。</p>
+<p><font color="red"><strong>Failsafe  &nbsp;失败安全</strong></font><br>出现异常时，直接忽略，通常用于写入审计日志等操作，调用信息丢失。可用于生产环境 Monitor。<br>
 		  	  
-	</div>
+	</p></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2017/10/21/新建文件夹/Dubbo原理分析/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/10/21/Dubbo的集群容错和负载均衡/">阅读更多</a> 	</div>	
     
 </article>     
      	
@@ -266,18 +373,20 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2017/10/21/新建文件夹/数据库的事务隔离级别/">数据库的事务隔离级别</a>  
+	     <a class="article-title" href="/2017/10/19/数据库的事务隔离级别/">数据库的事务隔离级别</a>  
 	       
 		 
 
 		<div class="article-meta">
 		
-		10月 21, 2017
+		10月 19, 2017
 
 		
 			<span class="iconfont icon-star"></span>		 
 			            
 			<a class="article-tag" href="/tags/Database/">Database</a>           
+			            
+			<a class="article-tag" href="/tags/Transaction/">Transaction</a>           
 			
 		
 		</div>
@@ -289,49 +398,15 @@
 
     
 	<div class="article-excerpt">	
-		 
-			<p>&nbsp; &nbsp; &nbsp; &nbsp;数据库事务的ACID特性</p>
-<ol>
-<li>事务的四个特性<br>数据库事务（Transaction）是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。一方面，当多个应用程序并发访问数据库时，事务可以在应用程序间提供一个隔离方法，防止互相干扰。另一方面，事务为数据库操作序列提供了一个从失败恢复正常的方法。</li>
-</ol>
+		
+			<h1 id="￣ε￣；"><a href="#￣ε￣；" class="headerlink" title="(￣ε￣；)"></a>(￣ε￣；)</h1><h2 id="事务的四个特性"><a href="#事务的四个特性" class="headerlink" title="事务的四个特性"></a>事务的四个特性</h2><p>数据库事务（Transaction）是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。一方面，当多个应用程序并发访问数据库时，事务可以在应用程序间提供一个隔离方法，防止互相干扰。另一方面，事务为数据库操作序列提供了一个从失败恢复正常的方法。</p>
 <p>事务具有四个特性：原子性（Atomicity）、一致性（Consistency）、隔离型（Isolation）、持久性（Durability），简称ACID。</p>
-<p>1.1 原子性（Atomicity）<br>事务的原子性是指事务中的操作不可拆分，只允许全部执行或者全部不执行。</p>
-<p>1.2 一致性（Consistency）<br>事务的一致性是指事务的执行不能破坏数据库的一致性，一致性也称为完整性。一个事务在执行后，数据库必须从一个一致性状态转变为另一个一致性状态。</p>
-<p>1.3 隔离型（Isolation）<br>事务的隔离型是指并发的事务相互隔离，不能互相干扰。</p>
-<p>1.4 持久性（Durability）<br>事务的持久性是指事务一旦提交，对数据的状态变更应该被永久保存。</p>
-<p>数据库事务隔离级别<br>原文链接：数据库事务隔离级别<br>数据库事务的隔离级别有4个，由低到高依次为Read uncommitted 、Read committed 、Repeatable read 、Serializable ，这四个级别可以逐个解决脏读 、不可重复读 、幻读 这几类问题。</p>
-<p>√: 可能出现    ×: 不会出现</p>
-<pre><code>脏读    不可重复读    幻读
-</code></pre><p>Read uncommitted    √    √    √<br>Read committed    ×    √    √<br>Repeatable read    ×    ×    √<br>Serializable    ×    ×    ×</p>
-<p>注意：我们讨论隔离级别的场景，主要是在多个事务并发 的情况下，因此，接下来的讲解都围绕事务并发。</p>
-<h3 id="Read-Uncommitted-读未提交"><a href="#Read-Uncommitted-读未提交" class="headerlink" title="Read Uncommitted 读未提交"></a>Read Uncommitted 读未提交</h3><p>公司发工资了，领导把5000元打到singo的账号上，但是该事务并未提交，而singo正好去查看账户，发现工资已经到账，是5000元整，非常高 兴。可是不幸的是，领导发现发给singo的工资金额不对，是2000元，于是迅速回滚了事务，修改金额后，将事务提交，最后singo实际的工资只有 2000元，singo空欢喜一场。</p>
-<p>出现上述情况，即我们所说的脏读 ，两个并发的事务，“事务A：领导给singo发工资”、“事务B：singo查询工资账户”，事务B读取了事务A尚未提交的数据。</p>
-<p>当隔离级别设置为Read uncommitted 时，就可能出现脏读，如何避免脏读，请看下一个隔离级别。</p>
-<h3 id="Read-Committed-读提交"><a href="#Read-Committed-读提交" class="headerlink" title="Read Committed 读提交"></a>Read Committed 读提交</h3><p>singo拿着工资卡去消费，系统读取到卡里确实有2000元，而此时她的老婆也正好在网上转账，把singo工资卡的2000元转到另一账户，并在 singo之前提交了事务，当singo扣款时，系统检查到singo的工资卡已经没有钱，扣款失败，singo十分纳闷，明明卡里有钱，为 何……</p>
-<p>出现上述情况，即我们所说的不可重复读 ，两个并发的事务，“事务A：singo消费”、“事务B：singo的老婆网上转账”，事务A事先读取了数据，事务B紧接了更新了数据，并提交了事务，而事务A再次读取该数据时，数据已经发生了改变。</p>
-<p>当隔离级别设置为Read committed 时，避免了脏读，但是可能会造成不可重复读。</p>
-<blockquote>
-<p>大多数数据库的默认级别就是Read Committed，比如Sql Server , Oracle。</p>
-</blockquote>
-<h3 id="Repeatable-Read-重复读"><a href="#Repeatable-Read-重复读" class="headerlink" title="Repeatable Read 重复读"></a>Repeatable Read 重复读</h3><p>当隔离级别设置为Repeatable read 时，可以避免不可重复读。当singo拿着工资卡去消费时，一旦系统开始读取工资卡信息（即事务开始），singo的老婆就不可能对该记录进行修改，也就是singo的老婆不能在此时转账。</p>
-<p>虽然Repeatable read避免了不可重复读，但还有可能出现幻读 。</p>
-<p>singo的老婆工作在银行部门，她时常通过银行内部系统查看singo的信用卡消费记录。有一天，她正在查询到singo当月信用卡的总消费金额 （select sum(amount) from transaction where month = 本月）为80元，而singo此时正好在外面胡吃海塞后在收银台买单，消费1000元，即新增了一条1000元的消费记录（insert transaction … ），并提交了事务，随后singo的老婆将singo当月信用卡消费的明细打印到A4纸上，却发现消费总额为1080元，singo的老婆很诧异，以为出 现了幻觉，幻读就这样产生了。</p>
-<blockquote>
-<p>注：Mysql的默认隔离级别就是Repeatable Read。</p>
-</blockquote>
-<h3 id="Serializable-序列化"><a href="#Serializable-序列化" class="headerlink" title="Serializable 序列化"></a>Serializable 序列化</h3><p>Serializable 是最高的事务隔离级别，同时代价也花费最高，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻像读。</p>
-<p>设置事务级别：SET TRANSACTION ISOLATION LEVEL</p>
-<p>开始事务：begin tran<br>mysql : begin;/begin work;/start transaction; </p>
-<p>提交事务：COMMIT</p>
-<p>回滚事务：ROLLBACK</p>
-<p>创建事务保存点：SAVE TRANSACTION savepoint_name</p>
-<p>回滚到事务点:ROLLBACK TRANSACTION savepoint_name</p>
-
+<p>1 原子性（Atomicity）<br>事务的原子性是指事务中的操作不可拆分，只允许全部执行或者全部不执行。<br>
 		  	  
-	</div>
+	</p></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2017/10/21/新建文件夹/数据库的事务隔离级别/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/10/19/数据库的事务隔离级别/">阅读更多</a> 	</div>	
     
 </article>     
      	
@@ -416,6 +491,86 @@
 
 	<div class="article-bottom">
 		<a class="article-readmore" href="/2017/10/05/数据库的锁机制/">阅读更多</a> 	</div>	
+    
+</article>     
+     	
+      	  	
+
+  		
+    	<article class="article">		
+	   
+	<div class="article-header">
+	    
+	     <a class="article-title" href="/2017/09/21/JVM的类加载机制/">JVM的类加载机制</a>  
+	       
+		 
+
+		<div class="article-meta">
+		
+		9月 21, 2017
+
+		
+			<span class="iconfont icon-star"></span>		 
+			            
+			<a class="article-tag" href="/tags/JVM/">JVM</a>           
+			
+		
+		</div>
+
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<h1 id="（￣Q￣）╯"><a href="#（￣Q￣）╯" class="headerlink" title="（￣Q￣）╯"></a>（￣Q￣）╯</h1><h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><p>如下图所示，JVM类加载机制分为五个部分：加载，验证，准备，解析，初始化，下面我们就分别来看一下这五个过程。<br><img src="/images/jvm/loadclass.png" alt="Alt text"><br>
+		  	  
+	</p></div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2017/09/21/JVM的类加载机制/">阅读更多</a> 	</div>	
+    
+</article>     
+     	
+      	  	
+
+  		
+    	<article class="article">		
+	   
+	<div class="article-header">
+	    
+	     <a class="article-title" href="/2017/09/16/JVM中的垃圾收集算法及回收器/">JVM中的垃圾收集算法及回收器</a>  
+	       
+		 
+
+		<div class="article-meta">
+		
+		9月 16, 2017
+
+		
+			<span class="iconfont icon-star"></span>		 
+			            
+			<a class="article-tag" href="/tags/JVM/">JVM</a>           
+			
+		
+		</div>
+
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<h1 id="（-￣▽￣-）"><a href="#（-￣▽￣-）" class="headerlink" title="（#￣▽￣#）"></a>（#￣▽￣#）</h1><h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><h3 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记 - 清除算法"></a>标记 - 清除算法</h3><p>标记-清除算法将垃圾回收分为两个阶段：标记阶段和清除阶段。在标记阶段首先通过根节点，标记所有从根节点开始的对象，未被标记的对象就是未被引用的垃圾对象。然后，在清除阶段，清除所有未被标记的对象。<br>标记清除算法主要不足有两个：一是效率问题，标记和清除两个过程效率都不高；另一个是标记清除之后会产生大量的空间碎片，因为回收后的空间是不连续的，这样给大对象分配内存的时候可能会提前触发full gc。<br>
+		  	  
+	</p></div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2017/09/16/JVM中的垃圾收集算法及回收器/">阅读更多</a> 	</div>	
     
 </article>     
      	

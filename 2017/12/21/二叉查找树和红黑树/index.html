@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  二叉查找树和红黑树 |   CodingCow </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <!-- <a class="header-logo" href="/"></a> -->
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-categories" href="/categories">分类</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		二叉查找树和红黑树
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		12月 21, 2017
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			1790
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<h1 id="┐（─-─）┌"><a href="#┐（─-─）┌" class="headerlink" title="┐（─__─）┌"></a>┐（─__─）┌</h1><h2 id="二叉查找树（BST）的特性"><a href="#二叉查找树（BST）的特性" class="headerlink" title="二叉查找树（BST）的特性"></a>二叉查找树（BST）的特性</h2><p>(1) 左子树上所有结点的值均小于或等于它的根结点的值。</p>
+<p>(2) 右子树上所有结点的值均大于或等于它的根结点的值。</p>
+<p>(3) 左、右子树也分别为二叉排序树。</p>
+<p>下图中这棵树，就是一颗典型的二叉查找树：<br><a id="more"></a><br><img src="/images/redBlackTree/binarytree.jpeg" alt="Alt BST"><br>如果要查找图中值为10的节点：<br><img src="/images/redBlackTree/binarytree.png" alt="Alt BST"><br>顺序为：先查看根节点9；由于10 &gt; 9，因此查看右孩子13；由于10 &lt; 13，因此查看左孩子11；由于10 &lt; 11，因此查看左孩子10，发现10正是要查找的节点。</p>
+<p>这种方式正是二分查找的思想，查找所需的最大次数等同于二叉查找树的高度。在插入节点的时候也是利用类似的方法，通过一层一层比较大小找到新节点适合插入的位置。</p>
+<h2 id="二叉查找树的缺陷"><a href="#二叉查找树的缺陷" class="headerlink" title="二叉查找树的缺陷"></a>二叉查找树的缺陷</h2><p>二叉查找树在多次插入新节点之后可能树结构的不平衡，形成线性结构，降低查找性能。<br>例如，假设初始的二叉查找树只有三个节点，根节点值为9，左孩子值为8，右孩子值为12：<br><img src="/images/redBlackTree/bst1.png" alt="Alt BST"><br>接下来我们依次插入如下五个节点：7,6,5,4,3。依照二叉查找树的特性，结果会变成什么样呢？<br><img src="/images/redBlackTree/bst2.png" alt="Alt BST"><br>为解决这一缺陷，于是……</p>
+<h2 id="红黑树诞生"><a href="#红黑树诞生" class="headerlink" title="红黑树诞生"></a>红黑树诞生</h2><p>红黑树（Red Black Tree）是一种自平衡的二叉查找树，除了符合二叉查找树的基本特性外，它还具有下列的附加特性：<br>①  节点是红色或黑色。<br>②  根节点是黑色。<br>③  每个叶子节点都是黑色的空节点（NIL节点）。<br>④  每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)<br>⑤  从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。</p>
+<p>下图中这棵树，就是一颗典型的红黑树：<br><img src="/images/redBlackTree/rbt1.jpeg" alt="Alt BST"></p>
+<blockquote>
+<p>红黑树从跟到叶子的最长路径不会超过最短路径的2倍。<br>在插入或删除节点时红黑树的规则可能被打破，这就需要旋转或变色来维持我们的规则。</p>
+</blockquote>
+<p>什么情况下会破坏红黑树的规则，什么情况下不会破坏规则呢？我们举两个简单的栗子：</p>
+<p><strong>栗子1：不会破坏规则</strong><br>向原红黑树插入值为14的新节点：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt2.jpeg" class="lazyload"><br><strong>栗子2：会破坏规则</strong><br>向原红黑树插入值为21的新节点：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt3.jpeg" class="lazyload"><br>由于父节点22是红色节点，因此这种情况打破了红黑树的规则4（每个红色节点的两个子节点都是黑色），必须进行调整，使之重新符合红黑树的规则。调整有两种方法<font color="blue">[ 变色 ]</font>和<font color="blue">[ 旋转 ]</font>；旋转又分为[ 左旋转 ]和[ 右旋转 ]。</p>
+<h3 id="变色："><a href="#变色：" class="headerlink" title="变色："></a>变色：</h3><p>为了重新符合红黑树的规则，尝试把红色节点变为黑色，或者把黑色节点变为红色。</p>
+<p>下图所表示的是红黑树的一部分，需要注意节点25并非根节点。因为节点21和节点22连续出现了红色，不符合规则4，所以把节点22从红色变成黑色：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt4.jpeg" class="lazyload"><br>但这样并不算完，因为凭空多出的黑色节点打破了规则5，所以发生连锁反应，需要继续把节点25从黑色变成红色：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt5.jpeg" class="lazyload"><br>此时仍然没有结束，因为节点25和节点27又形成了两个连续的红色节点，需要继续把节点27从红色变成黑色：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt6.jpeg" class="lazyload"></p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><blockquote>
+<p><strong>左旋转：</strong><br>逆时针旋转红黑树的两个节点，使得父节点被自己的右孩子取代，而自己成为自己的左孩子。说起来很怪异，大家看下图：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/lrotate.png" class="lazyload"><br>图中，身为右孩子的Y取代了X的位置，而X变成了自己的左孩子。此为左旋转。</p>
+</blockquote>
+<blockquote>
+<p><strong>右旋转：</strong><br>顺时针旋转红黑树的两个节点，使得父节点被自己的左孩子取代，而自己成为自己的右孩子。大家看下图：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rrotate.png" class="lazyload"><br>图中，身为左孩子的Y取代了X的位置，而X变成了自己的右孩子。此为右旋转。</p>
+</blockquote>
+<p>我们以刚才插入节点21的情况为例：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt7.jpeg" class="lazyload"><br>首先，我们需要做的是变色，把节点25及其下方的节点变色：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt8.jpeg" class="lazyload"><br>此时节点17和节点25是连续的两个红色节点，那么把节点17变成黑色节点？恐怕不合适。这样一来不但打破了规则4，而且根据规则2（根节点是黑色），也不可能把节点13变成红色节点。</p>
+<p>变色已无法解决问题，我们把节点13看做X，把节点17看做Y，像刚才的示意图那样进行左旋转：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/lrotate.png" class="lazyload"><br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt9.jpeg" class="lazyload"><br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt10.jpeg" class="lazyload"><br>由于根节点必须是黑色节点，所以需要变色，变色结果如下：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt11.jpeg" class="lazyload"><br>这样就结束了吗？并没有。因为其中两条路径(17 -&gt; 8 -&gt; 6 -&gt; NIL)的黑色节点个数是4，其他路径的黑色节点个数是3，不符合规则5。</p>
+<p>这时候我们需要把节点13看做X，节点8看做Y，像刚才的示意图那样进行右旋转：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rrotate.png" class="lazyload"><br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt12.jpeg" class="lazyload"><br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt13.jpeg" class="lazyload"><br>最后根据规则来进行变色：<br><img src="/images/placeholder.png" alt="Alt BST" data-src="/images/redBlackTree/rbt14.jpeg" class="lazyload"><br>如此一来，我们的红黑树变得重新符合规则。这一个例子的调整过程比较复杂，经历了如下步骤：</p>
+<p>变色 -&gt; 左旋转 -&gt; 变色 -&gt; 右旋转 -&gt; 变色</p>
+<blockquote>
+<p>红黑树的应用有很多，其中 JDK 的集合类 TreeSet 和 TreeMap 底层就是用红黑树实现的。另外Java 8 中的 HashMap 也用到了红黑树。</p>
+</blockquote>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      
+        <i class="iconfont icon-category"></i>       
+        <a class="category-link" href="/categories/数据结构/">数据结构</a> 	
+     
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/Binary-Tree/">Binary Tree</a> <a class="tag-link" href="/tags/Tree/">Tree</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar lazyload" src="/images/placeholder.png" data-src="/images/header.jpg">
+      <p class="pf-des">Hi, nice to meet you.</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+        
+
+
+
+
+<span class="donate-btn" title="赞赏">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate1.png">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate2.png">	
+	</div>
+
+	<span class="donate-word">生活总是充满惊喜</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat" style="cursor:pointer"></span>&nbsp;&nbsp;
+		<span class="iconfont icon-donate-alipay" style="cursor:pointer"></span>
+	</div>
+
+</div>
+
+ 
+        
+	
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
+	
+	<span class="share-btn" title="分享">
+		<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-tumblr -mob-share-tumblr"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2017/12/21/新建文件夹/HashMap原理分析(JDK1.8)/" data-hover="HashMap原理分析(JDK1.8)">上一篇</a>      
+            
+        
+      
+        
+        <a href="/2017/12/18/MySQL中的几种引擎介绍/" data-hover="MySQL中的几种引擎介绍"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: 'qn6gri9c4QxH9F1Np1F2YJ5K-gzGzoHsz',
+        app_key: '7H7or8956JshFahQvPgGg1yy',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
+    </script>
+	
+</article>
+
+
+	<div id="toc">		
+
+		<div class="toc-container">	
+
+		<span class="toc-contents"> 
+			目录
+		</span>
+
+		<ul class="toc-list"></ul>
+
+		</div>
+
+	</div>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+
+        
+        <div class="search-container sildeUpMin">
+
+
+            <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+          
+            </div>
+              
+            <div id="search-result" class="search-result"></div>
+
+        </div>
+ 
+
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/categories">分类
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2017-
+		
+		2018		
+	
+		&nbsp;CodingCow
+		<br>
+
+		Powered By
+		<a href="https://hexo.io/" target="_blank">Hexo</a>
+		<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+		</div>			
+	 
+</footer>   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
