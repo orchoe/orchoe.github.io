@@ -102,7 +102,7 @@
 	   
 	<div class="article-header">
 	    
-	     <a class="article-title" href="/2017/12/21/二叉查找树和红黑树/">二叉查找树和红黑树</a>  
+	     <a class="article-title" href="/2017/12/21/新建文件夹/HashMap原理分析(JDK1.8)/">HashMap原理分析(JDK1.8)</a>  
 	       
 		 
 
@@ -113,9 +113,7 @@
 		
 			<span class="iconfont icon-star"></span>		 
 			            
-			<a class="article-tag" href="/tags/Tree/">Tree</a>           
-			            
-			<a class="article-tag" href="/tags/Binary-Tree/">Binary Tree</a>           
+			<a class="article-tag" href="/tags/HashMap/">HashMap</a>           
 			
 		
 		</div>
@@ -128,15 +126,13 @@
     
 	<div class="article-excerpt">	
 		
-			<h1 id="┐（─-─）┌"><a href="#┐（─-─）┌" class="headerlink" title="┐（─__─）┌"></a>┐（─__─）┌</h1><h2 id="二叉查找树（BST）的特性"><a href="#二叉查找树（BST）的特性" class="headerlink" title="二叉查找树（BST）的特性"></a>二叉查找树（BST）的特性</h2><p>(1) 左子树上所有结点的值均小于或等于它的根结点的值。</p>
-<p>(2) 右子树上所有结点的值均大于或等于它的根结点的值。</p>
-<p>(3) 左、右子树也分别为二叉排序树。</p>
-<p>下图中这棵树，就是一颗典型的二叉查找树：<br>
+			<p>&nbsp; &nbsp; &nbsp; &nbsp; HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。HashMap类不保证映射的顺序，特别是它不保证该顺序恒久不变。</p>
+<h2 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; 在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。<br><img src="/images/hashmap.png" alt="Alt text"><br>&nbsp; &nbsp; &nbsp; &nbsp; 从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一个HashMap的时候，就会初始化一个数组。<br>
 		  	  
 	</p></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2017/12/21/二叉查找树和红黑树/">阅读更多</a> 	</div>	
+		<a class="article-readmore" href="/2017/12/21/新建文件夹/HashMap原理分析(JDK1.8)/">阅读更多</a> 	</div>	
     
 </article>     
      	
@@ -170,107 +166,10 @@
 
     
 	<div class="article-excerpt">	
-		 
+		
 			<h1 id="（￣∞￣）"><a href="#（￣∞￣）" class="headerlink" title="（￣∞￣）"></a>（￣∞￣）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎，还可以获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引擎。<strong>MySql的核心就是存储引擎</strong>。</p>
 <p><strong>存储引擎查看</strong></p>
 <p>MySQL给开发者提供了查询存储引擎的功能，我这里使用的是MySQL5.5，可以使用：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">ENGINES</span></span><br></pre></td></tr></table></figure></p>
-<p>命令来查看MySQL使用的引擎，命令的输出为（我用的Navicat Premium）：<br><img src="/images/mysql/storageEngine1.png" alt="img"><br>MySQL给用户提供了多种存储引擎，包括处理事务安全表的引擎和处理非事务安全表的引擎。</p>
-<p>如果要想查看数据库默认使用哪个引擎，可以通过使用命令：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'storage_engine'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>来查看，查询结果为：<br><img src="/images/mysql/storageEngine2.png" alt="img"></p>
-<h2 id="修改数据库引擎："><a href="#修改数据库引擎：" class="headerlink" title="修改数据库引擎："></a>修改数据库引擎：</h2><p>方式一：<br>修改配置文件my.ini<br>将mysql.ini另存为my.ini，在[mysqld]后面添加default-storage-engine=InnoDB，重启服务，数据库默认的引擎修改为InnoDB<br>方式二：<br>在建表的时候指定<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> mytbl(   </span><br><span class="line">   	<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,   </span><br><span class="line">  	 	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">50</span>)   </span><br><span class="line">)<span class="keyword">type</span>=MyISAM;</span><br></pre></td></tr></table></figure></p>
-<p>方式三：<br>建表后更改<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">type</span> = <span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>怎么查看修改成功</strong><br>方式一：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">status</span> <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></p>
-<p>方式二：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> table_name</span><br></pre></td></tr></table></figure></p>
-<p>方式三：<br>使用数据库管理工具啊。</p>
-<p>在MySQL中，不需要在整个服务器中使用同一种存储引擎，针对具体的要求，可以对每一个表使用不同的存储引擎。Support列的值表示某种引擎是否能使用：YES表示可以使用、NO表示不能使用、DEFAULT表示该引擎为当前默认的存储引擎 。下面来看一下其中几种常用的引擎。</p>
-<h2 id="InnoDB："><a href="#InnoDB：" class="headerlink" title="InnoDB："></a>InnoDB：</h2><p>定义：（默认的存储引擎）<br>InnoDB是一个事务型的存储引擎，有行级锁定和外键约束。<br>Innodb引擎提供了对数据库ACID（原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability））事务的支持，并且实现了SQL标准的四种隔离级别，关于数据库事务与其隔离级别的内容请见数据库事务与其隔离级别这类型的文章。该引擎还提供了行级锁和外键约束，它的设计目标是处理大容量数据库系统，它本身其实就是基于MySQL后台的完整数据库系统，MySQL运行时Innodb会在内存中建立缓冲池，用于缓冲数据和索引。但是该引擎不支持FULLTEXT类型的索引，而且它没有保存表的行数，当SELECT COUNT(*) FROM TABLE时需要扫描全表。当需要使用数据库事务时，该引擎当然是首选。由于锁的粒度更小，写操作不会锁定全表，所以在并发较高时，使用Innodb引擎会提升效率。但是使用行级锁也不是绝对的，如果在执行一个SQL语句时MySQL不能确定要扫描的范围，InnoDB表同样会锁全表。<br>//这个就是select锁表的一种，不明确主键。增删改查都可能会导致锁全表，在以后我们会详细列出。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> products <span class="keyword">WHERE</span> <span class="keyword">name</span>=<span class="string">'Mouse'</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure></p>
-<p>适用场景：<br>1）经常更新的表，适合处理多重并发的更新请求。<br>2）支持事务。<br>3）可以从灾难中恢复（通过bin-log日志等）。<br>4）外键约束。只有他支持外键。<br>5）支持自动增加列属性auto_increment。</p>
-<p>MySQL官方对 InnoDB 的讲解：<br>1）InnoDB给MySQL提供了具有提交、回滚和崩溃恢复能力的事务安全（ACID兼容）存储引擎。<br>2）InnoDB锁定在行级并且也在SELECT语句提供一个Oracle风格一致的非锁定读，这些特色增加了多用户部署和性能。没有在InnoDB中扩大锁定的需要，因为在InnoDB中行级锁定适合非常小的空间。<br>3）InnoDB也支持FOREIGN KEY强制。在SQL查询中，你可以自由地将InnoDB类型的表与其它MySQL的表的类型混合起来，甚至在同一个查询中也可以混合。<br>4）InnoDB是为处理巨大数据量时的最大性能设计，它的CPU效率可能是任何其它基于磁盘的关系数据库引擎所不能匹敌的。<br>5） InnoDB被用来在众多需要高性能的大型数据库站点上产生。</p>
-<h2 id="MyISAM："><a href="#MyISAM：" class="headerlink" title="MyISAM："></a>MyISAM：</h2><p>定义：<br>MyIASM是MySQL默认的引擎，但是它没有提供对数据库事务的支持，也不支持行级锁和外键，因此当INSERT(插入)或UPDATE(更新)数据时即写操作需要锁定整个表，效率便会低一些。<br>MyISAM 存储引擎独立于操作系统，也就是可以在windows上使用，也可以比较简单的将数据转移到linux操作系统上去。<br>意味着：引擎在创建表的时候，会创建三个文件，一个是.frm文件用于存储表的定义，一个是.MYD文件用于存储表的数据，另一个是.MYI文件，存储的是索引。操作系统对大文件的操作是比较慢的，这样将表分为三个文件，那么.MYD这个文件单独来存放数据自然可以优化数据库的查询等操作。有索引管理和字段管理。MyISAM还使用一种表格锁定的机制，来优化多个并发的读写操作，其代价是你需要经常运行OPTIMIZE TABLE命令，来恢复被更新机制所浪费的空间。</p>
-<p>适用场景：<br>1）不支持事务的设计，但是并不代表着有事务操作的项目不能用MyISAM存储引擎，可以在service层进行根据自己的业务需求进行相应的控制。<br>2）不支持外键的表设计。<br>3）查询速度很快，如果数据库insert和update的操作比较多的话比较适用。<br>4）整天 对表进行加锁的场景。<br>5）MyISAM极度强调快速读取操作。<br>6）MyIASM中存储了表的行数，于是SELECT COUNT(*) FROM TABLE时只需要直接读取已经保存好的值而不需要进行全表扫描。如果表的读操作远远多于写操作且不需要数据库事务的支持，那么MyIASM也是很好的选择。<br>缺点：<br>就是不能在表损坏后恢复数据。（是不能主动恢复）</p>
-<blockquote>
-<p>补充：ISAM索引方法–索引顺序存取方法<br>定义：<br>是一个定义明确且历经时间考验的数据表格管理方法，它在设计之时就考虑到 数据库被查询的次&gt; 数要远大于更新的次数。<br>特性：<br>ISAM执行读取操作的速度很快，而且不占用大量的内存和存储资源。<br>在设计之初就预想数据组织成有固定长度的记录，按顺序存储的。—ISAM是一种静态索引结构。<br>缺点：<br>1.它不 支持事务处理<br>2.也不能够容错。如果你的硬盘崩溃了，那么数据文件就无法恢复了。如果你正在把ISAM用在关键任务应用程序里，那就必须经常备份你所有的实 时数据，通过其复制特性，MYSQL能够支持这样的备份应用程序。</p>
-</blockquote>
-<h2 id="Memory（也叫HEAP）："><a href="#Memory（也叫HEAP）：" class="headerlink" title="Memory（也叫HEAP）："></a>Memory（也叫HEAP）：</h2><p>定义：<br>使用存在内存中的内容来创建表。每个MEMORY表只实际对应一个磁盘文件。MEMORY类型的表访问非常得快，因为它的数据是放在内存中的，并且默认使用HASH索引。<br>但是一旦服务关闭，表中的数据就会丢失掉。 HEAP允许只驻留在内存里的临时表格。驻留在内存里让HEAP要比ISAM和MYISAM都快，但是它所管理的数据是不稳定的，而且如果在关机之前没有进行保存，那么所有的数据都会丢失。在数据行被删除的时候，HEAP也不会浪费大量的空间。HEAP表格在你需要使用SELECT表达式来选择和操控数据的时候非常有用。</p>
-<p>适用场景：<br>1）那些内容变化不频繁的代码表，或者作为统计操作的中间结果表，便于高效地堆中间结果进行分析并得到最终的统计结果。<br>2）目标数据比较小，而且非常频繁的进行访问，在内存中存放数据，如果太大的数据会造成内存溢出。可以通过参数max_heap_table_size控制Memory表的大小，限制Memory表的最大的大小。<br>3）数据是临时的，而且必须立即可用得到，那么就可以放在内存中。<br>4）存储在Memory表中的数据如果突然间丢失的话也没有太大的关系。<br>注意： Memory同时支持散列索引和B树索引，B树索引可以使用部分查询和通配查询，也可以使用&lt;,&gt;和&gt;=等操作符方便数据挖掘，散列索引相等的比较快但是对于范围的比较慢很多。<br>特性要求：<br>1）要求存储的数据是数据长度不变的格式，比如，Blob和Text类型的数据不可用（长度不固定的）。<br>2）要记住，在用完表格之后就删除表格。</p>
-<h2 id="Archive"><a href="#Archive" class="headerlink" title="Archive"></a>Archive</h2><p>定义：<br>基本上用于数据归档；它的压缩比非常的高，存储空间大概是innodb的10-15分之一所以它用来存储历史数据非常的适合，由于它不支持索引同时也不能缓存索引和数据，所以它不适合作为并发访问表的存储引擎。Archivec存储引擎使用行锁来实现高并发插入操作，但是它不支持事务，其设计目标只是提供高速的插入和压缩功能。<br>Archiv存储引擎的特点：<br>1、往archive表插入的数据会使用zlib进行数据压缩，磁盘I/O更少，archive支持optimize table、 check table操作。<br>2、每个archive表在磁盘上存在两个文件 .frm(存储表定义) 和 .arz(存储数据)。</p>
-<p>3、archive存储引擎支持insert、replace和select操作，但是不支持update和delete。</p>
-<p>4、archive存储引擎支持blob、text等大字段类型。支持auto_increment自增列同时自增列可以不是唯一索引。</p>
-<p>5、archive支持auto_increment列，但是不支持往auto_increment列插入一个小于当前最大的值的值。</p>
-<p>6、archive不支持索引所以无法在archive表上创建主键、唯一索引、和一般的索引。</p>
-<p>7、Archive表比MyISAM表要小大约75%，比支持事务处理的InnoDB表小大约83%。当数据量非常大的时候（达到1.5GB这个量级，CPU又比较快的时候）Archive的插入性能表现会较MyISAM为佳。</p>
-<p>8、较小的空间占用，移植MySQL数据方便。当你需要把数据从一台MySQL服务器转移到另一台的时候，Archive表可以方便地移植到新的MySQL环境，你只需将保存Archive表的底层文件复制过去就可以了。</p>
-<h2 id="Mrg-Myisam：（分表的一种方式–水平分表）"><a href="#Mrg-Myisam：（分表的一种方式–水平分表）" class="headerlink" title="Mrg_Myisam：（分表的一种方式–水平分表）"></a>Mrg_Myisam：（分表的一种方式–水平分表）</h2><p>定义：<br>是一个相同的可以被当作一个来用的MyISAM表的集合。“相同”意味着所有表同样的列和索引信息。<br>也就是说，他将MyIsam引擎的多个表聚合起来，但是它的内部没有数据，真正的数据依然是MyIsam引擎的表中，但是可以直接进行查询、删除更新等操作。<br>比如：我们可能会遇到这样的问题，同一种类的数据会根据数据的时间分为多个表，如果这时候进行查询的话，就会比较麻烦，Merge可以直接将多个表聚合成一个表统一查询，然后再删除Merge表（删除的是定义），原来的数据不会影响。</p>
-<h2 id="Blackhole（黑洞引擎）"><a href="#Blackhole（黑洞引擎）" class="headerlink" title="Blackhole（黑洞引擎）"></a>Blackhole（黑洞引擎）</h2><p>定义<br>任何写入到此引擎的数据均会被丢弃掉， 不做实际存储；Select语句的内容永远是空。<br>他会丢弃所有的插入的数据，服务器会记录下Blackhole表的日志，所以可以用于复制数据到备份数据库。<br>使用场景：<br>1）验证dump file语法的正确性<br>2）以使用blackhole引擎来检测binlog功能所需要的额外负载<br>3）充当日志服务器</p>
-<h2 id="存储引擎的选择"><a href="#存储引擎的选择" class="headerlink" title="存储引擎的选择"></a>存储引擎的选择</h2><p>不同的存储引擎都有各自的特点，以适应不同的需求，如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th><strong>功  能</strong></th>
-<th><strong>MyISAM</strong></th>
-<th><strong>Memory</strong></th>
-<th><strong>InnoDB</strong></th>
-<th><strong>Archive</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>存储限制</td>
-<td>256TB</td>
-<td>RAM</td>
-<td>64TB</td>
-<td>None</td>
-</tr>
-<tr>
-<td>支持事物</td>
-<td>No</td>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>支持全文索引</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>支持数索引</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>支持哈希索引</td>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>支持数据缓存</td>
-<td>No</td>
-<td>N/A</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>支持外键</td>
-<td>No</td>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-<p>如果要提供提交、回滚、崩溃恢复能力的事物安全（ACID兼容）能力，并要求实现并发控制，InnoDB是一个好的选择。</p>
-<p>如果数据表主要用来插入和查询记录，则MyISAM引擎能提供较高的处理效率。</p>
-<p>如果只是临时存放数据，数据量不大，并且不需要较高的数据安全性，可以选择将数据保存在内存中的Memory引擎，MySQL中使用该引擎作为临时表，存放查询的中间结果。</p>
-<p>如果只有INSERT和SELECT操作，可以选择Archive，Archive支持高并发的插入操作，但是本身不是事务安全的。Archive非常适合存储归档数据，如记录日志信息可以使用Archive。</p>
-<p>使用哪一种引擎需要灵活选择，<strong>一个数据库中多个表可以使用不同引擎以满足各种性能和实际需求</strong>，使用合适的存储引擎，将会提高整个数据库的性能。</p>
-
 		  	  
 	</div>
 

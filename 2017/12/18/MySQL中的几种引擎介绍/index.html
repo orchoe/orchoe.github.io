@@ -92,7 +92,7 @@
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			5237
+			5229
 		</span>
 	
 </div>
@@ -108,6 +108,7 @@
 					<h1 id="（￣∞￣）"><a href="#（￣∞￣）" class="headerlink" title="（￣∞￣）"></a>（￣∞￣）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、更新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎，还可以获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引擎。<strong>MySql的核心就是存储引擎</strong>。</p>
 <p><strong>存储引擎查看</strong></p>
 <p>MySQL给开发者提供了查询存储引擎的功能，我这里使用的是MySQL5.5，可以使用：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">ENGINES</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>命令来查看MySQL使用的引擎，命令的输出为（我用的Navicat Premium）：<br><img src="/images/mysql/storageEngine1.png" alt="img"><br>MySQL给用户提供了多种存储引擎，包括处理事务安全表的引擎和处理非事务安全表的引擎。</p>
 <p>如果要想查看数据库默认使用哪个引擎，可以通过使用命令：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'storage_engine'</span>;</span><br></pre></td></tr></table></figure></p>
 <p>来查看，查询结果为：<br><img src="/images/mysql/storageEngine2.png" alt="img"></p>
@@ -134,7 +135,7 @@
 <p>6、archive不支持索引所以无法在archive表上创建主键、唯一索引、和一般的索引。</p>
 <p>7、Archive表比MyISAM表要小大约75%，比支持事务处理的InnoDB表小大约83%。当数据量非常大的时候（达到1.5GB这个量级，CPU又比较快的时候）Archive的插入性能表现会较MyISAM为佳。</p>
 <p>8、较小的空间占用，移植MySQL数据方便。当你需要把数据从一台MySQL服务器转移到另一台的时候，Archive表可以方便地移植到新的MySQL环境，你只需将保存Archive表的底层文件复制过去就可以了。</p>
-<h2 id="Mrg-Myisam：（分表的一种方式–水平分表）"><a href="#Mrg-Myisam：（分表的一种方式–水平分表）" class="headerlink" title="Mrg_Myisam：（分表的一种方式–水平分表）"></a>Mrg_Myisam：（分表的一种方式–水平分表）</h2><p>定义：<br>是一个相同的可以被当作一个来用的MyISAM表的集合。“相同”意味着所有表同样的列和索引信息。<br>也就是说，他将MyIsam引擎的多个表聚合起来，但是它的内部没有数据，真正的数据依然是MyIsam引擎的表中，但是可以直接进行查询、删除更新等操作。<br>比如：我们可能会遇到这样的问题，同一种类的数据会根据数据的时间分为多个表，如果这时候进行查询的话，就会比较麻烦，Merge可以直接将多个表聚合成一个表统一查询，然后再删除Merge表（删除的是定义），原来的数据不会影响。</p>
+<h2 id="Mrg-Myisam（水平分表）"><a href="#Mrg-Myisam（水平分表）" class="headerlink" title="Mrg_Myisam（水平分表）"></a>Mrg_Myisam（水平分表）</h2><p>定义：<br>是一个相同的可以被当作一个来用的MyISAM表的集合。“相同”意味着所有表同样的列和索引信息。<br>也就是说，他将MyIsam引擎的多个表聚合起来，但是它的内部没有数据，真正的数据依然是MyIsam引擎的表中，但是可以直接进行查询、删除更新等操作。<br>比如：我们可能会遇到这样的问题，同一种类的数据会根据数据的时间分为多个表，如果这时候进行查询的话，就会比较麻烦，Merge可以直接将多个表聚合成一个表统一查询，然后再删除Merge表（删除的是定义），原来的数据不会影响。</p>
 <h2 id="Blackhole（黑洞引擎）"><a href="#Blackhole（黑洞引擎）" class="headerlink" title="Blackhole（黑洞引擎）"></a>Blackhole（黑洞引擎）</h2><p>定义<br>任何写入到此引擎的数据均会被丢弃掉， 不做实际存储；Select语句的内容永远是空。<br>他会丢弃所有的插入的数据，服务器会记录下Blackhole表的日志，所以可以用于复制数据到备份数据库。<br>使用场景：<br>1）验证dump file语法的正确性<br>2）以使用blackhole引擎来检测binlog功能所需要的额外负载<br>3）充当日志服务器</p>
 <h2 id="存储引擎的选择"><a href="#存储引擎的选择" class="headerlink" title="存储引擎的选择"></a>存储引擎的选择</h2><p>不同的存储引擎都有各自的特点，以适应不同的需求，如下表所示：</p>
 <table>
@@ -297,7 +298,7 @@
     <nav class="pf-paginator">
       
          
-          <a href="/2017/12/21/二叉查找树和红黑树/" data-hover="二叉查找树和红黑树">上一篇</a>      
+          <a href="/2017/12/21/新建文件夹/HashMap原理分析(JDK1.8)/" data-hover="HashMap原理分析(JDK1.8)">上一篇</a>      
             
         
       
