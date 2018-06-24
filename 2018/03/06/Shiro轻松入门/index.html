@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Shiro轻松入门 |   CodingCow </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <!-- <a class="header-logo" href="/"></a> -->
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-categories" href="/categories">分类</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		Shiro轻松入门
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		3月 06, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			2608
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<h1 id="“-▔□▔"><a href="#“-▔□▔" class="headerlink" title="(“ ▔□▔ )/"></a>(“ ▔□▔ )/</h1><h2 id="Shiro-简介"><a href="#Shiro-简介" class="headerlink" title="Shiro 简介"></a>Shiro 简介</h2><p>Apache Shiro 是 Java 的一个安全框架，支持JavaSE和JavaEE。Shiro 可以非常容易的开发出足够好的应用，可以帮助我们完成：认证、授权、加密、会话管理、与 Web 集成、缓存等。</p>
+<h4 id="Shiro基本功能"><a href="#Shiro基本功能" class="headerlink" title="Shiro基本功能"></a>Shiro基本功能</h4><p>其基本功能点如下图所示：<br><img src="/images/shiro/shiro1.png" alt="img"><br><a id="more"></a><br><b>Authentication：</b>身份认证/登录，验证用户是不是拥有相应的身份；</p>
+<p><b>Authorization：</b>授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限；</p>
+<p><b>Session Manager：</b>会话管理，即用户登录后就是一次会话，在没有退出之前，它的所有信息都在会话中；会话可以是普通 JavaSE 环境的，也可以是如 Web 环境的；</p>
+<p><b>Cryptography：</b>加密，保护数据的安全性，如密码加密存储到数据库，而不是明文存储；</p>
+<p><b>Web Support：</b>Web 支持，可以非常容易的集成到 Web 环境；</p>
+<p><b>Caching：</b>缓存，比如用户登录后，其用户信息、拥有的角色/权限不必每次去查，这样可以提高效率；</p>
+<p><b>Concurrency：</b>Shiro 支持多线程应用的并发验证，即如在一个线程中开启另一个线程，能把权限自动传播过去；</p>
+<p><b>Testing：</b>提供测试支持；</p>
+<p><b>Run As：</b>允许一个用户假装为另一个用户（如果他们允许）的身份进行访问；</p>
+<p><b>Remember Me：</b>记住我，这个是非常常见的功能，即一次登录后，下次再来的话不用登录了。</p>
+<blockquote>
+<p>Shiro 不会去维护用户、维护权限，这些需要我们自己去设计/提供，然后通过相应的接口注入 即可。</p>
+</blockquote>
+<h4 id="Shiro内部架构"><a href="#Shiro内部架构" class="headerlink" title="Shiro内部架构"></a>Shiro内部架构</h4><p><img src="/images/shiro/shiro3.png" alt="img"><br><b>Subject：</b>主体，主体可以是任何可以与应用交互的”用户”；</p>
+<p><b>SecurityManager：</b>相当于SpringMVC 的 DispatcherServlet 或者Struts2中的 FilterDispatcher；是Shiro的心脏；所有具体的交互都通过 SecurityManager 进行控制；它管理着所有 Subject、且负责进行认证和授权、及会话、缓存的管理。</p>
+<p><b>Authenticator：</b>认证器，负责主体认证的，这是一个扩展点，如果用户觉得 Shiro 默认的不好，可以自定义实现；其需要认证策略（Authentication Strategy），即什么情况下算用户认证通过了；</p>
+<p><b>Authrizer：</b>授权器，或者访问控制器，用来决定主体是否有权限进行相应的操作；即控制着用户能访问应用中的哪些功能；</p>
+<p><b>Realm：</b>可以有 1 个或多个 Realm，可以认为是安全实体数据源，即用于获取安全实体的；可以是 JDBC 实现，也可以是 LDAP 实现，或者内存实现等等；由用户提供；</p>
+<blockquote>
+<p>注意：Shiro不知道你的用户/权限存储在哪及以何种格式存储；所以我们一般在应用中都需要实现自己的 Realm。</p>
+</blockquote>
+<p><b>SessionManager：</b>如果写过 Servlet 就应该知道 Session 的概念，Session 呢需要有人去管理它的生命周期，这个组件就是 SessionManager；而 Shiro 并不仅仅可以用在 Web 环境，也可以用在如普通的 JavaSE 环境、EJB 等环境；所有呢，Shiro 就抽象了一个自己的 Session来管理主体与应用之间交互的数据；这样的话，比如我们在 Web 环境用，刚开始是一台Web 服务器；接着又上了台 EJB 服务器；这时想把两台服务器的会话数据放到一个地方，这个时候就可以实现自己的分布式会话（如把数据放到 Memcached 服务器）；</p>
+<p><b>SessionDAO：</b>DAO 大家都用过，数据访问对象，用于会话的 CRUD，比如我们想把Session保存到数据库，那么可以实现自己的 SessionDAO，通过如 JDBC 写到数据库；比如想把Session放到 Memcached 中，可以实现自己Memcached SessionDAO；另外 SessionDAO中可以使用 Cache 进行缓存，以提高性能；</p>
+<p><b>CacheManager：</b>缓存控制器，来管理如用户、角色、权限等的缓存的；因为这些数据基本上很少去改变，放到缓存中后可以提高访问的性能；</p>
+<p><b>Cryptography：</b>密码模块，Shiro 提高了一些常见的加密组件用于如密码加密/解密的。</p>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><h3 id="基于角色的访问控制"><a href="#基于角色的访问控制" class="headerlink" title="基于角色的访问控制"></a>基于角色的访问控制</h3><p>RBAC基于角色的访问控制（Role-Based Access Control）是以角色为中心进行访问控制，比如：主体的角色为总经理可以查询企业运营报表，查询员工工资信息等。</p>
+<h5 id="RBAC权限控制模型"><a href="#RBAC权限控制模型" class="headerlink" title="RBAC权限控制模型"></a>RBAC权限控制模型</h5><p>主体（账号、密码）<br>资源（资源名称、访问地址）<br>权限（权限名称、资源id）<br>角色（角色名称）<br>角色和权限关系（角色id、权限id）<br>主体和角色关系（主体id、角色id）<br><img src="/images/shiro/shiro4.png" alt="img"></p>
+<h3 id="粗粒度和细粒度"><a href="#粗粒度和细粒度" class="headerlink" title="粗粒度和细粒度"></a>粗粒度和细粒度</h3><p>什么是粗粒度和细粒度？<br><strong>对资源类型的管理称为粗颗粒度权限管理</strong>，即只控制到菜单、按钮、方法，粗粒度的例子比如：用户具有用户管理的权限，具有导出订单明细的权限。<br><strong>对资源实例的控制称为细颗粒度权限管理</strong>，即控制到数据级别的权限，比如：用户只允许修改本部门的员工信息，用户只允许导出自己创建的订单明细。</p>
+<blockquote>
+<p>如何实现粗粒度和细粒度？<br>对于粗颗粒度的权限管理可以很容易做系统架构级别的功能，即系统功能操作使用统一的粗颗粒度的权限管理。<br>对于细颗粒度的权限管理不建议做成系统架构级别的功能，因为对数据级别的控制是系统的业务需求，随着业务需求的变更业务功能变化的可能性很大，建议对数据级别的权限控制在业务层个性化开发，比如：用户只允许修改自己创建的商品信息可以在service接口添加校验实现，service接口需要传入当前操作人的标识，与商品信息创建人标识对比，不一致则不允许修改商品信息。 </p>
+</blockquote>
+<h2 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h2><h4 id="四个关键对象"><a href="#四个关键对象" class="headerlink" title="四个关键对象"></a>四个关键对象</h4><p><em><strong>Subject：主体</strong></em><br>访问系统的用户，主体可以是用户、程序等，进行认证的都称为主体；</p>
+<p><em><strong>Principals：身份信息</strong></em><br>即主体的标识属性，可以是任何东西，如用户名、邮箱等，唯一即可。一个主体可以有多个 principals， 但只有一个 Primary principals， 一般是用户名/密码/手机号。</p>
+<p><em><strong>Credentials：证明 /凭证</strong></em><br>即只有主体知道的安全值，如密码/数字证书等。最常见的 principals 和 credentials 组合就是用户名/密码。</p>
+<p><em><strong>Realm：数据源</strong></em><br>安全实体数据源，即用于获取安全实体信息，由用户提供。</p>
+<h3 id="代码入门"><a href="#代码入门" class="headerlink" title="代码入门"></a>代码入门</h3>  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      
+        <i class="iconfont icon-category"></i>       
+        <a class="category-link" href="/categories/权限管理/">权限管理</a> 	
+     
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/Shiro/">Shiro</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">Hi, nice to meet you.</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+        
+
+
+
+
+<span class="donate-btn" title="赞赏">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate2.png">	
+	</div>
+
+	<span class="donate-word">生活总是充满惊喜</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat" style="cursor:pointer"></span>&nbsp;&nbsp;
+		<span class="iconfont icon-donate-alipay" style="cursor:pointer"></span>
+	</div>
+
+</div>
+
+ 
+        
+	
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
+	
+	<span class="share-btn" title="分享">
+		<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-tumblr -mob-share-tumblr"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2018/03/09/SpringBoot集成MongoDB/" data-hover="SpringBoot集成MongoDB">上一篇</a>      
+            
+        
+      
+        
+        <a href="/2018/02/22/MongoDB的优点和缺点/" data-hover="MongoDB的优点和缺点"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: 'qn6gri9c4QxH9F1Np1F2YJ5K-gzGzoHsz',
+        app_key: '7H7or8956JshFahQvPgGg1yy',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
+    </script>
+	
+</article>
+
+
+	<div id="toc">		
+
+		<div class="toc-container">	
+
+		<span class="toc-contents"> 
+			目录
+		</span>
+
+		<ul class="toc-list"></ul>
+
+		</div>
+
+	</div>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+
+        
+        <div class="search-container sildeUpMin">
+
+
+            <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+          
+            </div>
+              
+            <div id="search-result" class="search-result"></div>
+
+        </div>
+ 
+
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/categories">分类
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2017-
+		
+		2018		
+	
+		&nbsp;CodingCow
+		<br>
+
+		Powered By
+		<a href="https://hexo.io/" target="_blank">Hexo</a>
+		<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+		</div>			
+	 
+</footer>   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
