@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  RocketMQ、Kafka和ActiveMQ对比分析 |   CodingCow </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <!-- <a class="header-logo" href="/"></a> -->
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-categories" href="/categories">分类</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		RocketMQ、Kafka和ActiveMQ对比分析
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		5月 02, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			1834
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<h1 id="（︶-︶）"><a href="#（︶-︶）" class="headerlink" title="（︶^︶）"></a>（︶^︶）</h1><h2 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h2><p>ActiveMQ作为传统型消息中间件，严格遵循JMS规范，功能全面，安装简单，需要的资源少。但是性能较差，不支持高并发和数以亿计的消息缓存，容错和扩展性差，不支持重复消费，不支持批处理。<br><a id="more"></a></p>
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><h4 id="Kafka-的优点"><a href="#Kafka-的优点" class="headerlink" title="Kafka 的优点"></a>Kafka 的优点</h4><p><strong>1、消息持久化</strong><br>以时间复杂度为O(1)的方式提供消息持久化能力，即使对TB级以上数据也能保证常数时间复杂度的访问性能。<br><strong>2、高性能 高吞吐率</strong><br>即使在非常廉价的商用机器上也能做到单机支持每秒100K条以上消息的传输，支持batch 操作。<br><strong>3、消息分区 分布式消费</strong><br>支持Kafka Server间的消息分区，及分布式消费，同时保证每个Partition内的消息顺序传输。同时支持离线数据处理和实时数据处理（Kafka Stream）。<br><strong>4、分布式可扩展</strong><br>支持在线水平扩展（Scale out），Kafka 集群可以透明的扩展，增加新的服务器进集群。<br><strong>5、高容错</strong><br>Kafka每个Partition的数据都会复制到几台服务器上。当某个Broker故障失效时，ZooKeeper服务将通知生产者和消费者，生产者和消费者转而使用其它Broker。</p>
+<h4 id="Kafka-的不足"><a href="#Kafka-的不足" class="headerlink" title="Kafka 的不足"></a>Kafka 的不足</h4><p><strong>1、重复消息</strong><br>Kafka 只保证每个消息至少会送达一次，虽然几率很小，但一条消息有可能会被送达多次。<br><strong>2、消息乱序</strong><br>虽然一个Partition 内部的消息是保证有序的，但是如果一个Topic 有多个Partition，Partition 之间的消息送达不保证有序。<br><strong>3、复杂性</strong><br>Kafka需要 zookeeper 集群的支持，Topic通常需要人工来创建，部署和维护较一般消息队列成本更高。</p>
+<h4 id="相比RocketMQ，Kafka的不足之处还在于"><a href="#相比RocketMQ，Kafka的不足之处还在于" class="headerlink" title="相比RocketMQ，Kafka的不足之处还在于"></a>相比RocketMQ，Kafka的不足之处还在于</h4><p><strong>生产者发布消息的并行性受到分区数量的限制</strong><br>消费者消费并行度的程度也受到消费分区数量的限制。 假设分区数量为20，并发消费使用者的最大数量为20。每个主题由固定数量的分区组成。 分区号决定了单个代理在不明显影响性能的情况下可以拥有的最大主题数量。</p>
+<blockquote>
+<p>为什么Kafka无法支持更多的分区？<br>每个分区存储整个消息数据。 尽管每个分区都按顺序写入磁盘，但随着并发写入分区数量的增加，写入在操作系统的角度上变得随机。由于分散的数据文件，使得 Kafka 很难使用Linux IO组提交机制。</p>
+</blockquote>
+<blockquote>
+<p>一般来说，Kafka集群中存在的分区越多，可以达到的吞吐量就越高，在某些情况下，分区太多也可能会产生负面影响。<br>（1）更多分区需要更多打开的文件句柄<br>（2）更多分区可能会增加不可用性<br>（3）更多分区可能会增加端到端延迟<br>（4）更多的分区可能需要更多的客户端内存<br><a href="https://www.confluent.io/blog/how-to-choose-the-number-of-topicspartitions-in-a-kafka-cluster/" target="_blank" rel="noopener">具体分析看这里</a></p>
+</blockquote>
+<h2 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><h4 id="为何RocketMQ能支持更多的分区？"><a href="#为何RocketMQ能支持更多的分区？" class="headerlink" title="为何RocketMQ能支持更多的分区？"></a>为何RocketMQ能支持更多的分区？</h4><p><img src="/images/kafka/rocketmq-queues.png" alt="img"><br>1、所有的消息数据都存储在提交日志文件中。所有写入都是完全顺序的，而读取是随机的。<br>2、ConsumeQueue存储实际用户消费位置信息，这些信息也以顺序方式刷新到磁盘。</p>
+<blockquote>
+<p>优点：</p>
+<ol>
+<li>每个消费队列都是轻量级的，并且包含有限的元数据。</li>
+<li>对磁盘的访问是完全顺序的，这可以避免磁盘锁争用，并且在创建大量队列时不会导致高磁盘IO等待。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>缺点：</p>
+<ol>
+<li>消息消耗将首先读取消耗队列，然后提交日志。这个过程在最坏的情况下会带来一定的成本。</li>
+<li>提交日志和消耗队列需要在逻辑上一致，这给编程模型带来了额外的复杂性。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>设计动机：</p>
+<ol>
+<li>随机阅读。尽可能多地读取以增加页面缓存命中率，并减少读取IO操作。所以大的内存仍然是可取的。如果大量消息累积，读取性能会严重下降吗？答案是否定的，原因如下：<br>(1) 即使消息的大小仅为1KB，系统也会提前读取更多数据，请参阅PAGECACHE预取以供参考。这意味着对于后续数据读取，它将访问将要执行的主存储器，而不是慢速磁盘IO读取。<br>(2) 从磁盘随机访问提交日志。如果在SSD的情况下将 I/O 调度器设置为NOOP，则读取的QPS将大大加速，因此比其他电梯调度器算法快得多。</li>
+<li>由于ConsumeQueue只存储固定大小的元数据，主要用于记录消费进度，所以随机读取得到很好的支持。利用页面缓存（PageCache）预取功能，访问ConsumeQueue的速度与访问主内存一样快，即使是在大量消息积累的情况下。因此，ConsumeQueue不会对阅读性能造成显着的损失。</li>
+<li>CommitLog存储几乎所有的信息，包括消息数据。与关系数据库的重做日志类似，只要提交日志存在，消费队列，消息密钥索引和所有其他所需数据都可以完全恢复。</li>
+</ol>
+</blockquote>
+<h2 id="RocketMQ-vs-ActiveMQ-vs-Kafka"><a href="#RocketMQ-vs-ActiveMQ-vs-Kafka" class="headerlink" title="RocketMQ vs. ActiveMQ vs. Kafka"></a>RocketMQ vs. ActiveMQ vs. Kafka</h2><p><img src="/images/kafka/mqvs.png" alt="img"></p>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      
+        <i class="iconfont icon-category"></i>       
+        <a class="category-link" href="/categories/消息队列/">消息队列</a> 	
+     
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/Kafka/">Kafka</a> <a class="tag-link" href="/tags/MQ/">MQ</a> <a class="tag-link" href="/tags/RocketMQ/">RocketMQ</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">Hi, nice to meet you.</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+        
+
+
+
+
+<span class="donate-btn" title="赞赏">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/donate2.png" alt="No Donate Image!">	
+	</div>
+
+	<span class="donate-word">生活总是充满惊喜</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat" style="cursor:pointer"></span>&nbsp;&nbsp;
+		<span class="iconfont icon-donate-alipay" style="cursor:pointer"></span>
+	</div>
+
+</div>
+
+ 
+        
+	
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=266d31baa8b09"></script>
+	
+	<span class="share-btn" title="分享">
+		<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-tumblr -mob-share-tumblr"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2018/05/27/Spark深入浅出/" data-hover="Spark深⼊浅出">上一篇</a>      
+            
+        
+      
+        
+        <a href="/2018/04/27/新建文件夹/Solr轻松入门/" data-hover="Solr轻松入门"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: 'qn6gri9c4QxH9F1Np1F2YJ5K-gzGzoHsz',
+        app_key: '7H7or8956JshFahQvPgGg1yy',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
+    </script>
+	
+</article>
+
+
+	<div id="toc">		
+
+		<div class="toc-container">	
+
+		<span class="toc-contents"> 
+			目录
+		</span>
+
+		<ul class="toc-list"></ul>
+
+		</div>
+
+	</div>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+
+        
+        <div class="search-container sildeUpMin">
+
+
+            <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+          
+            </div>
+              
+            <div id="search-result" class="search-result"></div>
+
+        </div>
+ 
+
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/categories">分类
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2017-
+		
+		2018		
+	
+		&nbsp;CodingCow
+		<br>
+
+		Powered By
+		<a href="https://hexo.io/" target="_blank">Hexo</a>
+		<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+		</div>			
+	 
+</footer>   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>

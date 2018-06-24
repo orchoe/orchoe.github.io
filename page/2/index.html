@@ -254,9 +254,9 @@
 	<div class="article-excerpt">	
 		
 			<h1 id="o-O"><a href="#o-O" class="headerlink" title="o_O"></a>o_O</h1><h2 id="容错机制"><a href="#容错机制" class="headerlink" title="容错机制"></a>容错机制</h2><p>&nbsp; &nbsp; &nbsp; &nbsp; Dubbo中常见容错机制包括 failover，failsafe，failfase，failback，forking，缺省为failover重试。</p>
-<p><font color="red"><strong>Failover  &nbsp;失败自动切换</strong></font><br>当出现失败，重试其它服务器。通常用于读操作，但重试会带来更长延迟。可通过retries=”2”来设置重试次数(不含第一次)。</p>
-<p><font color="red"><strong>Failfast  &nbsp;快速失败</strong></font><br>只发起一次调用，失败立即报错。通常用于非幂等性的写操作，比如新增记录。</p>
-<p><font color="red"><strong>Failsafe  &nbsp;失败安全</strong></font><br>出现异常时，直接忽略，通常用于写入审计日志等操作，调用信息丢失。可用于生产环境 Monitor。<br>
+<p><font color="#1A75B1"><strong>Failover  &nbsp;失败自动切换</strong></font><br>当出现失败，重试其它服务器。通常用于读操作，但重试会带来更长延迟。可通过retries=”2”来设置重试次数(不含第一次)。</p>
+<p><font color="#1A75B1"><strong>Failfast  &nbsp;快速失败</strong></font><br>只发起一次调用，失败立即报错。通常用于非幂等性的写操作，比如新增记录。</p>
+<p><font color="#1A75B1"><strong>Failsafe  &nbsp;失败安全</strong></font><br>出现异常时，直接忽略，通常用于写入审计日志等操作，调用信息丢失。可用于生产环境 Monitor。<br>
 		  	  
 	</p></div>
 
